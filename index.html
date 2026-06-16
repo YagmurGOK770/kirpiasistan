@@ -503,8 +503,8 @@
             <span><span class="tiny">Yakında</span> Google Play</span>
           </span>
         </div>
-        <form class="notify" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Teşekkürler!';">
-          <input type="email" placeholder="E-posta adresin" aria-label="E-posta adresi" required />
+        <form class="notify" id="notify-form">
+          <input type="email" name="email" placeholder="E-posta adresin" aria-label="E-posta adresi" required />
           <button type="submit">Haber ver</button>
         </form>
       </div>
@@ -521,6 +521,40 @@
       <p>© 2026 Kirpi Asistan · Emlak danışmanının kişisel asistanı · Çok yakında</p>
     </div>
   </footer>
+
+  <!-- ── E-posta kaydı → Google Sheets (Apps Script Web App) ──────────────
+       NOTE: Replace NOTIFY_ENDPOINT below with your deployed Apps Script URL.
+       Until then, submissions just show "Teşekkürler!" without being stored. -->
+  <script>
+    (function () {
+      // Paste your Google Apps Script Web App URL here (ends with /exec):
+      var NOTIFY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw-c0fYQzVRbbPuk1qR_QaFKjCSSFBcD4Y-jsljaaO2b3RRNMgPuGpfbR6sovqswXJdCA/exec';
+
+      var form = document.getElementById('notify-form');
+      if (!form) return;
+      var btn = form.querySelector('button');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = (form.email.value || '').trim();
+        if (!email) return;
+
+        // Visual confirmation stays identical regardless of network result.
+        btn.textContent = 'Teşekkürler!';
+        btn.disabled = true;
+
+        if (!NOTIFY_ENDPOINT || NOTIFY_ENDPOINT.indexOf('PASTE_') === 0) return;
+
+        // text/plain avoids a CORS preflight Apps Script can't answer.
+        fetch(NOTIFY_ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ email: email, source: location.href })
+        }).catch(function () { /* best-effort; user already saw success */ });
+      });
+    })();
+  </script>
 
 </body>
 </html>
