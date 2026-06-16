@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kirpi — Kira yenilemelerini hatırlatan dostun</title>
-  <meta name="description" content="Kirpi, emlak danışmanları için kira sözleşmesi ve yenileme takip uygulaması. Yenileme tarihlerini, artış oranlarını ve belgeleri tek yerde tutar; zamanı gelince seni uyarır. Yakında!" />
+  <title>Kirpi Asistan — Emlak danışmanının kişisel asistanı</title>
+  <meta name="description" content="Kirpi Asistan, emlak danışmanları için kişisel asistan uygulamasıdır. Kira sözleşmelerini, yenileme tarihlerini ve artış oranlarını senin yerine takip eder; zamanı gelince seni uyarır. Yakında!" />
   <meta name="theme-color" content="#0EA5E9" />
 
   <!-- Open Graph / paylaşım önizlemesi -->
-  <meta property="og:title" content="Kirpi — Kira yenilemelerini hatırlatan dostun" />
-  <meta property="og:description" content="Emlak danışmanları için akıllı kira sözleşmesi ve yenileme takibi. Yakında!" />
-  <meta property="og:image" content="kirpi-hedgehog.png" />
+  <meta property="og:title" content="Kirpi Asistan — Emlak danışmanının kişisel asistanı" />
+  <meta property="og:description" content="Emlak danışmanları için kişisel asistan: kira sözleşmesi ve yenileme takibi. Yakında!" />
+  <meta property="og:image" content="kirpi-hedgehog-transparent.png" />
   <meta property="og:type" content="website" />
 
-  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="icon" type="image/png" href="kirpi-hedgehog-transparent.png" />
 
   <!-- Albert Sans + JetBrains Mono — uygulamanın yazı ailesiyle uyumlu -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -185,8 +185,9 @@
     .feature:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
     .feature .ico {
       width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center;
-      font-size: 24px; margin-bottom: 16px; background: var(--sky-soft);
+      font-size: 24px; margin-bottom: 16px; background: var(--sky-soft); overflow: hidden;
     }
+    .feature .ico img { width: 36px; height: 36px; object-fit: contain; }
     .feature h3 { font-size: 18px; margin-bottom: 7px; }
     .feature p { color: var(--sub); font-size: 15px; }
 
@@ -202,6 +203,29 @@
     }
     .step h3 { font-size: 18px; margin-bottom: 7px; }
     .step p { color: var(--sub); font-size: 15px; }
+
+    /* ── Kişisel asistanın ─────────────────────────────────────────────── */
+    .assistant {
+      background:
+        radial-gradient(800px 400px at 50% -10%, rgba(125,211,252,0.28), transparent 60%),
+        var(--surface-alt);
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .assistant-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 44px; }
+    .assistant-item {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 26px 24px; box-shadow: var(--shadow-sm);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .assistant-item:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .assistant-item .num {
+      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+      color: var(--sky-deep); background: var(--sky-soft);
+      width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
+      margin-bottom: 16px; letter-spacing: 0.02em;
+    }
+    .assistant-item h3 { font-size: 17px; margin-bottom: 7px; }
+    .assistant-item p { color: var(--sub); font-size: 14.5px; }
 
     /* ── Kimiz biz ──────────────────────────────────────────────────────── */
     .who-inner { max-width: 720px; margin: 0 auto; text-align: center; }
@@ -249,12 +273,18 @@
     .foot p { color: var(--faint); font-size: 14px; }
 
     /* ── Duyarlı ───────────────────────────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .assistant-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 860px) {
       .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .hero-art { order: -1; }
       .features-grid, .steps-grid { grid-template-columns: 1fr; }
       section { padding: 64px 0; }
       .hero { padding: 48px 0 64px; }
+    }
+    @media (max-width: 600px) {
+      .assistant-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -264,7 +294,7 @@
   <header>
     <div class="wrap nav">
       <div class="brand">
-        <img src="kirpi-hedgehog.png" alt="Kirpi maskotu" />
+        <img src="kirpi-hedgehog-transparent.png" alt="Kirpi maskotu" />
         <span class="name">Kirpi</span>
       </div>
       <a class="nav-cta" href="#soon">Beni haberdar et</a>
@@ -275,12 +305,12 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="badge"><span class="dot"></span> Çok yakında • iOS &amp; Android</span>
-        <h1>Kira yenilemelerini <span class="grad">unutturmayan</span> dostun.</h1>
+        <span class="badge"><span class="dot"></span> Kişisel asistanın • Çok yakında • iOS &amp; Android</span>
+        <h1>Yanından ayrılmayan <span class="grad">kişisel asistanın.</span></h1>
         <p class="lede">
-          Kirpi, emlak danışmanları için akıllı bir kira sözleşmesi takipçisidir.
-          Sözleşmelerini, yenileme tarihlerini ve artış oranlarını tek yerde tutar;
-          zamanı gelince seni nazikçe dürter.
+          <b>Kirpi Asistan</b>, emlak danışmanları için tasarlanmış akıllı bir kişisel asistandır.
+          Sözleşmelerini, yenileme tarihlerini ve artış oranlarını senin yerine takip eder;
+          tek başına uğraşma — Kirpi hep yanında.
         </p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#soon">Lansmanda haber ver →</a>
@@ -292,9 +322,45 @@
         <div class="mascot-card">
           <img src="kirpi-hedgehog.png" alt="Kirpi — sevimli kirpi maskotu" />
           <div class="speech">
-            Merhaba, ben <b>Kirpi</b>! 👋<br />
+            Merhaba, ben <b>Kirpi Asistan</b>!<br />
             Sözleşmenin fotoğrafını eklersen alanları <b>senin için</b> doldururum.
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Kişisel asistanın ────────────────────────────────────────────── -->
+  <section class="assistant" id="assistant">
+    <div class="wrap center">
+      <div class="eyebrow">Kişisel Asistanın</div>
+      <h2>Sadece bir uygulama değil — yanından ayrılmayan tek asistan.</h2>
+      <p class="section-lede">
+        Kirpi'yi cebinde taşırsın; o da senin için takip eder, hesaplar ve hatırlatır.
+        Akıllı bir asistanın yapacağı işi yapar, sen asıl işine — müşterine — odaklanırsın.
+      </p>
+    </div>
+    <div class="wrap">
+      <div class="assistant-grid">
+        <div class="assistant-item">
+          <div class="num">01</div>
+          <h3>Hep yanında</h3>
+          <p>Sabah ofiste, akşam sahada — Kirpi her zaman cebinde. Sözleşmelerine nereden olursa olsun ulaşırsın.</p>
+        </div>
+        <div class="assistant-item">
+          <div class="num">02</div>
+          <h3>Senin için çalışır</h3>
+          <p>Tarihleri o takip eder, yeni kirayı o hesaplar, hatırlatmayı o yapar. Sen sadece onay verirsin.</p>
+        </div>
+        <div class="assistant-item">
+          <div class="num">03</div>
+          <h3>Seninle konuşur</h3>
+          <p>Kirpi sana “sen” diye hitap eder; her ipucunu kendi ağzından, sade ve dostça anlatır.</p>
+        </div>
+        <div class="assistant-item">
+          <div class="num">04</div>
+          <h3>Hiç yorulmaz</h3>
+          <p>Unutmaz, ertelemez, gözden kaçırmaz. Portföyün büyüdükçe Kirpi de seninle büyür.</p>
         </div>
       </div>
     </div>
@@ -308,7 +374,7 @@
         <h2>Her kira yenilemesini takip eden cepteki asistanın.</h2>
         <p class="section-lede">
           Emlak danışmanları yüzlerce sözleşmeyle, farklı yenileme tarihleriyle ve
-          değişen TÜFE oranlarıyla uğraşır. Kirpi bu yükü senden alır: her sözleşmeyi
+          değişen TÜFE oranlarıyla uğraşır. Kirpi Asistan bu yükü senden alır: her sözleşmeyi
           tek tek dijitalleştirir, yenileme zamanını hesaplar ve doğru anda hatırlatır.
         </p>
         <p class="section-lede">
@@ -318,15 +384,15 @@
       </div>
       <div>
         <div class="about-card">
-          <h3>🗂️ Hiçbir yenileme kaçmaz</h3>
+          <h3>Hiçbir yenileme kaçmaz</h3>
           <p>Her sözleşmenin yenileme tarihini ben takip ederim; gün gelmeden sana haber veririm.</p>
         </div>
         <div class="about-card">
-          <h3>📈 Yeni kirayı otomatik hesaplar</h3>
+          <h3>Yeni kirayı otomatik hesaplar</h3>
           <p>Artış oranını gir, önerilen yeni kirayı saniyesinde göster — ev sahibiyle konuşmaya hazırsın.</p>
         </div>
         <div class="about-card">
-          <h3>🔒 Verilerin sende kalır</h3>
+          <h3>Verilerin sende kalır</h3>
           <p>Sözleşme ve belgelerin cihazında güvende saklanır. Sade, hızlı ve gizlilik dostu.</p>
         </div>
       </div>
@@ -343,32 +409,32 @@
     <div class="wrap">
       <div class="features-grid">
         <div class="feature">
-          <div class="ico">📸</div>
+          <div class="ico"><img src="kirpi-hedgehog-transparent.png" alt="" /></div>
           <h3>Sözleşmeyi tara, dolduralım</h3>
           <p>Sözleşmenin fotoğrafını ya da PDF'ini ekle; Kirpi alanları senin için otomatik doldurmaya çalışır.</p>
         </div>
         <div class="feature">
-          <div class="ico">⏰</div>
+          <div class="ico"><img src="kirpi-hedgehog-transparent.png" alt="" /></div>
           <h3>Akıllı hatırlatmalar</h3>
           <p>Yenileme tarihinden günler önce bildirim al. Hangi gün, kaç gün önce — sen seç.</p>
         </div>
         <div class="feature">
-          <div class="ico">🧮</div>
+          <div class="ico"><img src="kirpi-hedgehog-transparent.png" alt="" /></div>
           <h3>Artış oranı hesabı</h3>
           <p>TÜFE / kira artış oranını gir, önerilen yeni kirayı anında gör.</p>
         </div>
         <div class="feature">
-          <div class="ico">💬</div>
+          <div class="ico"><img src="kirpi-hedgehog-transparent.png" alt="" /></div>
           <h3>Tek dokunuşla iletişim</h3>
           <p>Ev sahibini veya kiracıyı doğrudan ara, SMS ya da WhatsApp ile ulaş.</p>
         </div>
         <div class="feature">
-          <div class="ico">📅</div>
+          <div class="ico"><img src="kirpi-hedgehog-transparent.png" alt="" /></div>
           <h3>Portföye genel bakış</h3>
           <p>Tüm sözleşmelerin, yaklaşan yenilemelerin ve mülklerin tek ekranda.</p>
         </div>
         <div class="feature">
-          <div class="ico">🌙</div>
+          <div class="ico"><img src="kirpi-hedgehog-transparent.png" alt="" /></div>
           <h3>Senin tarzında</h3>
           <p>Açık/koyu tema, dört renk seçeneği ve Türkçe/İngilizce dil desteği.</p>
         </div>
@@ -424,22 +490,20 @@
   <section class="soon" id="soon">
     <div class="wrap">
       <div class="soon-card">
-        <h2>Kirpi çok yakında geliyor 🦔</h2>
+        <h2>Kirpi Asistan çok yakında geliyor</h2>
         <p>
           Uygulamamızın son rötuşlarını yapıyoruz. App Store ve Google Play'de
           yayınlandığında ilk haberi almak ister misin?
         </p>
         <div class="stores">
           <span class="store-pill">
-            <span></span>
             <span><span class="tiny">Yakında</span> App Store</span>
           </span>
           <span class="store-pill">
-            <span>▶</span>
             <span><span class="tiny">Yakında</span> Google Play</span>
           </span>
         </div>
-        <form class="notify" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Teşekkürler! 🎉';">
+        <form class="notify" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Teşekkürler!';">
           <input type="email" placeholder="E-posta adresin" aria-label="E-posta adresi" required />
           <button type="submit">Haber ver</button>
         </form>
@@ -451,10 +515,10 @@
   <footer>
     <div class="wrap foot">
       <div class="brand">
-        <img src="kirpi-hedgehog.png" alt="Kirpi" style="width:30px;height:30px;border-radius:8px;" />
+        <img src="kirpi-hedgehog-transparent.png" alt="Kirpi" style="width:30px;height:30px;border-radius:8px;" />
         <span class="name">Kirpi</span>
       </div>
-      <p>© 2026 Kirpi · Emlak danışmanları için kira yenileme takipçisi · Çok yakında</p>
+      <p>© 2026 Kirpi Asistan · Emlak danışmanının kişisel asistanı · Çok yakında</p>
     </div>
   </footer>
 
