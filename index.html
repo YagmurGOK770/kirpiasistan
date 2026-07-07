@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kirpi Asistan — Emlak danışmanının kişisel asistanı</title>
-  <meta name="description" content="Kirpi Asistan, emlak danışmanları için kişisel asistan uygulamasıdır. Kira sözleşmelerini, yenileme tarihlerini ve artış oranlarını senin yerine takip eder; zamanı gelince seni uyarır. Yakında!" />
+  <title>Kirpi — Güvenli, Hızlı, Basit kira takibi</title>
+  <meta name="description" content="Kirpi, emlak danışmanları için kira sözleşmesi ve yenileme takip uygulamasıdır. Basit arayüz, hızlı işlemler ve cihazında güvende kalan verilerle. Yakında!" />
   <meta name="theme-color" content="#0EA5E9" />
 
   <!-- Open Graph / paylaşım önizlemesi -->
-  <meta property="og:title" content="Kirpi Asistan — Emlak danışmanının kişisel asistanı" />
-  <meta property="og:description" content="Emlak danışmanları için kişisel asistan: kira sözleşmesi ve yenileme takibi. Yakında!" />
+  <meta property="og:title" content="Kirpi — Güvenli, Hızlı, Basit kira takibi" />
+  <meta property="og:description" content="Emlak danışmanları için kira sözleşmesi ve yenileme takibi: güvenli, hızlı ve basit. Yakında!" />
   <meta property="og:image" content="kirpi-hedgehog-transparent.png" />
   <meta property="og:type" content="website" />
 
@@ -46,6 +46,7 @@
       --radius-sm: 14px;
       --shadow: 0 18px 48px -16px rgba(15, 23, 42, 0.22);
       --shadow-sm: 0 4px 16px -6px rgba(15, 23, 42, 0.16);
+      --shadow-dark: 0 22px 54px -18px rgba(8, 47, 73, 0.55);
       --maxw: 1080px;
     }
 
@@ -65,6 +66,9 @@
     .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
     .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+    /* Marka anahtar kelimesi — "Kirpi" her yerde mavi vurgulanır */
+    .kw { color: var(--sky-deep); font-weight: 700; }
 
     /* ── Üst gezinme ───────────────────────────────────────────────────── */
     header {
@@ -164,75 +168,114 @@
     .center { text-align: center; }
     .center .section-lede { margin-left: auto; margin-right: auto; }
 
-    /* ── Kirpi nedir / kim ─────────────────────────────────────────────── */
-    .about { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-    .about-card {
+    /* ── İki sütunlu blok (Nasıl Çalışır) ──────────────────────────────── */
+    .split { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .info-card {
       background: var(--surface-alt); border: 1px solid var(--line);
-      border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow-sm);
+      border-radius: var(--radius); padding: 26px 28px; box-shadow: var(--shadow-sm);
+      display: flex; gap: 18px; align-items: flex-start;
     }
-    .about-card h3 { font-size: 19px; margin-bottom: 8px; }
-    .about-card p { color: var(--sub); font-size: 15.5px; }
-    .about-card + .about-card { margin-top: 16px; }
+    .info-card + .info-card { margin-top: 16px; }
+    .info-card .n {
+      flex: none; width: 42px; height: 42px; border-radius: 12px;
+      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 15px; color: #fff;
+      background: linear-gradient(135deg, var(--hero-1), var(--hero-2));
+      display: grid; place-items: center; box-shadow: var(--shadow-sm);
+    }
+    .info-card h3 { font-size: 18px; margin-bottom: 5px; }
+    .info-card p { color: var(--sub); font-size: 15.5px; }
 
-    /* ── Özellikler ─────────────────────────────────────────────────────── */
-    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
-    .feature {
-      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 28px; box-shadow: var(--shadow-sm);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .feature:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    .feature .ico {
-      width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center;
-      font-size: 24px; margin-bottom: 16px; background: var(--sky-soft); overflow: hidden;
-    }
-    .feature .ico img { width: 36px; height: 36px; object-fit: contain; }
-    .feature h3 { font-size: 18px; margin-bottom: 7px; }
-    .feature p { color: var(--sub); font-size: 15px; }
-
-    /* ── Nasıl yardımcı olur (adımlar) ─────────────────────────────────── */
-    .steps { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 44px; }
-    .step { position: relative; padding-top: 8px; }
-    .step .num {
-      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 14px;
-      color: #fff; background: linear-gradient(135deg, var(--hero-1), var(--hero-2));
-      width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center;
-      margin-bottom: 16px; box-shadow: var(--shadow-sm);
-    }
-    .step h3 { font-size: 18px; margin-bottom: 7px; }
-    .step p { color: var(--sub); font-size: 15px; }
-
-    /* ── Kişisel asistanın ─────────────────────────────────────────────── */
-    .assistant {
+    /* ── Basit · Hızlı · Güvenli (üç sütun) ────────────────────────────── */
+    .pillars {
       background:
         radial-gradient(800px 400px at 50% -10%, rgba(125,211,252,0.28), transparent 60%),
         var(--surface-alt);
       border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
     }
-    .assistant-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 44px; }
-    .assistant-item {
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+    .pillar {
       background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 26px 24px; box-shadow: var(--shadow-sm);
+      padding: 32px 28px; box-shadow: var(--shadow-sm); text-align: left;
       transition: transform .18s ease, box-shadow .18s ease;
     }
-    .assistant-item:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    .assistant-item .num {
-      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
-      color: var(--sky-deep); background: var(--sky-soft);
-      width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
-      margin-bottom: 16px; letter-spacing: 0.02em;
+    .pillar:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .pillar .ico {
+      width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center;
+      font-size: 26px; margin-bottom: 18px;
+      background: linear-gradient(135deg, var(--hero-1), var(--hero-2));
+      box-shadow: 0 10px 24px -10px rgba(14,165,233,0.6);
     }
-    .assistant-item h3 { font-size: 17px; margin-bottom: 7px; }
-    .assistant-item p { color: var(--sub); font-size: 14.5px; }
+    .pillar h3 { font-size: 21px; margin-bottom: 8px; letter-spacing: -0.01em; }
+    .pillar p { color: var(--sub); font-size: 15.5px; }
+    .pillar .tag {
+      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--sky-deep); background: var(--sky-soft);
+      padding: 4px 10px; border-radius: 999px; margin-bottom: 14px;
+    }
+    .pillar .more {
+      display: inline-flex; align-items: center; gap: 5px; margin-top: 14px;
+      font-weight: 700; font-size: 14px; color: var(--sky-deep); text-decoration: none;
+    }
+    .pillar .more:hover { text-decoration: underline; }
+    /* Güvenli sütununu koyu lacivertle öne çıkar (güvenlik bandıyla aynı renk) */
+    .pillar.featured {
+      background: linear-gradient(160deg, var(--hero-dark-1), var(--hero-dark-2));
+      border-color: transparent; color: #fff; box-shadow: var(--shadow-dark);
+    }
+    .pillar.featured h3 { color: #fff; }
+    .pillar.featured p { color: rgba(255,255,255,0.80); }
+    .pillar.featured .tag { color: var(--glow); background: rgba(125,211,252,0.16); }
+    .pillar.featured .more { color: var(--glow); }
 
-    /* ── Kimiz biz ──────────────────────────────────────────────────────── */
-    .who-inner { max-width: 720px; margin: 0 auto; text-align: center; }
-    .who-inner p { color: var(--sub); font-size: 17px; margin-top: 14px; }
+    /* ── Güvenli — öne çıkan güvenlik bandı ────────────────────────────── */
+    .secure {
+      position: relative; overflow: hidden; color: #fff;
+      background: linear-gradient(165deg, var(--hero-dark-1), var(--hero-dark-2));
+    }
+    .secure::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(720px 360px at 15% -10%, rgba(125,211,252,0.22), transparent 60%);
+    }
+    .secure-inner { position: relative; }
+    .secure-head { max-width: 640px; }
+    .secure .eyebrow.light { color: var(--glow); }
+    .secure h2 { color: #fff; }
+    .secure-head p { color: rgba(255,255,255,0.82); font-size: 18px; margin-top: 6px; }
+    .secure-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+    .secure-card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+      border-radius: var(--radius); padding: 26px 22px;
+      transition: transform .18s ease, background .18s ease;
+    }
+    .secure-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.10); }
+    .secure-card .ico {
+      width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center;
+      font-size: 22px; margin-bottom: 15px;
+      background: rgba(125,211,252,0.16); border: 1px solid rgba(125,211,252,0.25);
+    }
+    .secure-card h3 { font-size: 16.5px; margin-bottom: 6px; color: #fff; }
+    .secure-card p { color: rgba(255,255,255,0.76); font-size: 14px; line-height: 1.55; }
+
+    /* ── Hikayemiz (koyu lacivert anlatı bandı) ────────────────────────── */
+    .story {
+      position: relative; overflow: hidden; color: #fff;
+      background: linear-gradient(165deg, var(--hero-dark-1), var(--hero-dark-2));
+    }
+    .story::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(720px 360px at 85% -10%, rgba(125,211,252,0.20), transparent 60%);
+    }
+    .story-inner { position: relative; max-width: 760px; margin: 0 auto; text-align: center; }
+    .story .eyebrow.light { color: var(--glow); }
+    .story h2 { color: #fff; }
+    .story p { color: rgba(255,255,255,0.82); font-size: 17px; margin-top: 16px; }
+
+    /* Koyu bölümlerde "Kirpi" vurgusu açık maviye döner */
+    .secure .kw, .story .kw, .pillar.featured .kw { color: var(--glow); }
 
     /* ── Çağrı / yakında ───────────────────────────────────────────────── */
-    .soon { padding: 0 0 96px; }
+    .soon { padding: 88px 0 96px; }
     .soon-card {
       background: linear-gradient(160deg, var(--hero-1), var(--hero-2));
       border-radius: 32px; padding: 56px 40px; text-align: center; color: #fff;
@@ -243,6 +286,7 @@
       background: radial-gradient(600px 300px at 80% -20%, rgba(255,255,255,0.22), transparent 60%);
     }
     .soon-card h2 { color: #fff; position: relative; }
+    .soon-card .kw { color: var(--glow); }
     .soon-card p { color: rgba(255,255,255,0.92); font-size: 18px; max-width: 560px; margin: 12px auto 28px; position: relative; }
     .stores { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
     .store-pill {
@@ -254,6 +298,7 @@
     .store-pill .tiny { font-size: 11px; opacity: 0.8; font-weight: 500; display: block; line-height: 1.1; }
     .notify {
       margin-top: 30px; position: relative; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+      transition: opacity .45s ease;
     }
     .notify input {
       font-family: inherit; font-size: 15px; padding: 14px 18px; border-radius: 999px; border: none;
@@ -265,6 +310,13 @@
       transition: transform .15s ease;
     }
     .notify button:hover { transform: translateY(-2px); }
+    /* Gönderim sonrası teşekkür — form solar, bu belirir */
+    .notify-thanks {
+      display: none; opacity: 0; transition: opacity .45s ease;
+      margin-top: 30px; position: relative; color: #fff;
+      font-size: 22px; font-weight: 800; letter-spacing: -0.01em;
+    }
+    .notify-thanks span { display: block; font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.92); margin-top: 6px; }
 
     /* ── Alt bilgi ─────────────────────────────────────────────────────── */
     footer { padding: 40px 0 56px; border-top: 1px solid var(--line); }
@@ -274,17 +326,14 @@
 
     /* ── Duyarlı ───────────────────────────────────────────────────────── */
     @media (max-width: 1000px) {
-      .assistant-grid { grid-template-columns: repeat(2, 1fr); }
+      .pillars-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 860px) {
-      .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-grid, .split-grid { grid-template-columns: 1fr; gap: 40px; }
+      .secure-grid { grid-template-columns: 1fr; }
       .hero-art { order: -1; }
-      .features-grid, .steps-grid { grid-template-columns: 1fr; }
       section { padding: 64px 0; }
       .hero { padding: 48px 0 64px; }
-    }
-    @media (max-width: 600px) {
-      .assistant-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -305,16 +354,16 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="badge"><span class="dot"></span> Kişisel asistanın • Çok yakında • iOS &amp; Android</span>
-        <h1>Yanından ayrılmayan <span class="grad">kişisel asistanın.</span></h1>
+        <span class="badge"><span class="dot"></span> Güvenli · Hızlı · Basit • Çok yakında • iOS &amp; Android</span>
+        <h1>Kira takibinin <span class="grad">güvenli, hızlı, en&nbsp;basit</span> yolu.</h1>
         <p class="lede">
-          <b>Kirpi Asistan</b>, emlak danışmanları için tasarlanmış akıllı bir kişisel asistandır.
-          Sözleşmelerini, yenileme tarihlerini ve artış oranlarını senin yerine takip eder;
-          tek başına uğraşma — Kirpi hep yanında.
+          <span class="kw">Kirpi Asistan</span>, emlak danışmanları için kira sözleşmesi ve yenileme takip uygulamasıdır.
+          Sözleşmelerini, yenileme tarihlerini ve artış oranlarını tek yerde toplar —
+          karmaşa yok, gecikme yok, veri kaygısı yok.
         </p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#soon">Lansmanda haber ver →</a>
-          <a class="btn btn-ghost" href="#features">Neler yapabilir?</a>
+          <a class="btn btn-ghost" href="#how">Nasıl çalışır?</a>
         </div>
       </div>
 
@@ -322,166 +371,127 @@
         <div class="mascot-card">
           <img src="kirpi-hedgehog.png" alt="Kirpi — sevimli kirpi maskotu" />
           <div class="speech">
-            Merhaba, ben <b>Kirpi Asistan</b>!<br />
-            Sözleşmenin fotoğrafını eklersen alanları <b>senin için</b> doldururum.
+            Merhaba, ben <span class="kw">Kirpi Asistan</span>!<br />
+            Sözleşmenin fotoğrafını ekle,<br />
+            <b>hızıma şaşıracaksın</b>.
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Kişisel asistanın ────────────────────────────────────────────── -->
-  <section class="assistant" id="assistant">
+  <!-- ── Basit · Hızlı · Güvenli ──────────────────────────────────────── -->
+  <section class="pillars" id="why">
     <div class="wrap center">
-      <div class="eyebrow">Kişisel Asistanın</div>
-      <h2>Sadece bir uygulama değil — yanından ayrılmayan tek asistan.</h2>
+      <div class="eyebrow">Neden Kirpi?</div>
+      <h2>Güvenli, hızlı ve basit.</h2>
       <p class="section-lede">
-        Kirpi'yi cebinde taşırsın; o da senin için takip eder, hesaplar ve hatırlatır.
-        Akıllı bir asistanın yapacağı işi yapar, sen asıl işine — müşterine — odaklanırsın.
+        Kira takibini üç sözle özetliyoruz. <span class="kw">Kirpi</span> tam olarak bunun için tasarlandı.
       </p>
     </div>
     <div class="wrap">
-      <div class="assistant-grid">
-        <div class="assistant-item">
-          <div class="num">01</div>
-          <h3>Hep yanında</h3>
-          <p>Sabah ofiste, akşam sahada — Kirpi her zaman cebinde. Sözleşmelerine nereden olursa olsun ulaşırsın.</p>
+      <div class="pillars-grid">
+        <div class="pillar featured">
+          <span class="tag">Önceliğimiz</span>
+          <div class="ico">🔒</div>
+          <h3>Güvenli</h3>
+          <p>Bilgilerin kimseyle paylaşılmaz; cihazında, sana özel kalır.</p>
+          <a class="more" href="#secure">Verilerin nasıl korunuyor? →</a>
         </div>
-        <div class="assistant-item">
-          <div class="num">02</div>
-          <h3>Senin için çalışır</h3>
-          <p>Tarihleri o takip eder, yeni kirayı o hesaplar, hatırlatmayı o yapar. Sen sadece onay verirsin.</p>
+        <div class="pillar">
+          <div class="ico">⚡</div>
+          <h3>Hızlı</h3>
+          <p>Sözleşmenin fotoğrafını çek, alanlar saniyeler içinde dolsun. Yeni kirayı anında hesapla, tek dokunuşla iletişime geç.</p>
         </div>
-        <div class="assistant-item">
-          <div class="num">03</div>
-          <h3>Seninle konuşur</h3>
-          <p>Kirpi sana “sen” diye hitap eder; her ipucunu kendi ağzından, sade ve dostça anlatır.</p>
-        </div>
-        <div class="assistant-item">
-          <div class="num">04</div>
-          <h3>Hiç yorulmaz</h3>
-          <p>Unutmaz, ertelemez, gözden kaçırmaz. Portföyün büyüdükçe Kirpi de seninle büyür.</p>
+        <div class="pillar">
+          <div class="ico">✨</div>
+          <h3>Basit</h3>
+          <p>Karmaşık tablolara ve dağınık notlara son. Sözleşmeni ekle; her şey tek, sade ve düzenli bir ekranda toplansın.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Kirpi nedir ──────────────────────────────────────────────────── -->
-  <section class="about" id="about">
-    <div class="wrap about-grid">
-      <div>
-        <div class="eyebrow">Kirpi Nedir?</div>
-        <h2>Her kira yenilemesini takip eden cepteki asistanın.</h2>
-        <p class="section-lede">
-          Emlak danışmanları yüzlerce sözleşmeyle, farklı yenileme tarihleriyle ve
-          değişen TÜFE oranlarıyla uğraşır. Kirpi Asistan bu yükü senden alır: her sözleşmeyi
-          tek tek dijitalleştirir, yenileme zamanını hesaplar ve doğru anda hatırlatır.
-        </p>
-        <p class="section-lede">
-          Tablo, takvim, post-it ve telefon hatırlatıcılarına veda et —
-          hepsi tek, sade ve güvenli bir uygulamada.
+  <!-- ── Güvenli — öne çıkan güvenlik bandı ───────────────────────────── -->
+  <section class="secure" id="secure">
+    <div class="wrap secure-inner">
+      <div class="secure-head">
+        <div class="eyebrow light">Güvenlik Önceliğimiz</div>
+        <h2>Verilerin senin. Sadece senin.</h2>
+        <p>
+          Kira sözleşmeleri hassas bilgiler taşır. <span class="kw">Kirpi</span> bu yüzden baştan
+          güvenlik düşünülerek tasarlandı: bilgilerin cihazında kalır, izinsiz hiçbir
+          yere gitmez ve kontrol her zaman sende.
         </p>
       </div>
+      <div class="secure-grid">
+        <div class="secure-card">
+          <div class="ico">📱</div>
+          <h3>Cihazında saklanır</h3>
+          <p>Sözleşmelerin ve belgelerin senin telefonunda güvende durur.</p>
+        </div>
+        <div class="secure-card">
+          <div class="ico">🔐</div>
+          <h3>Sana özel erişim</h3>
+          <p>Verilerine yalnızca sen ulaşırsın. Reklam için işlenmez, üçüncü kişilerle paylaşılmaz.</p>
+        </div>
+        <div class="secure-card">
+          <div class="ico">📶</div>
+          <h3>Çevrimdışı da çalışır</h3>
+          <p>İnternet olmadan da sözleşmelerine ulaşırsın; bilgilerin her an elinin altında.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Nasıl Çalışır (iki sütunlu, okunması kolay) ──────────────────── -->
+  <section class="split" id="how">
+    <div class="wrap split-grid">
       <div>
-        <div class="about-card">
-          <h3>Hiçbir yenileme kaçmaz</h3>
-          <p>Her sözleşmenin yenileme tarihini ben takip ederim; gün gelmeden sana haber veririm.</p>
+        <div class="eyebrow">Nasıl Çalışır</div>
+        <h2>Üç adımda, dakikalar içinde.</h2>
+        <p class="section-lede">
+          Kurulum derdi yok, öğrenme eğrisi yok. Sözleşmeni ekle, gerisini
+          <span class="kw">Kirpi</span> halletsin.
+        </p>
+      </div>
+      <div>
+        <div class="info-card">
+          <span class="n">1</span>
+          <div>
+            <h3>Sözleşmeni ekle</h3>
+            <p>Fotoğraf çek ya da PDF yükle. Alanlar hızlıca doldurulur; sen sadece kontrol et.</p>
+          </div>
         </div>
-        <div class="about-card">
-          <h3>Yeni kirayı otomatik hesaplar</h3>
-          <p>Artış oranını gir, önerilen yeni kirayı saniyesinde göster — ev sahibiyle konuşmaya hazırsın.</p>
+        <div class="info-card">
+          <span class="n">2</span>
+          <div>
+            <h3>Artış oranını gir</h3>
+            <p>Kira artış oranını gir; önerilen yeni kira anında hesaplansın.</p>
+          </div>
         </div>
-        <div class="about-card">
-          <h3>Verilerin sende kalır</h3>
-          <p>Sözleşme ve belgelerin cihazında güvende saklanır. Sade, hızlı ve gizlilik dostu.</p>
+        <div class="info-card">
+          <span class="n">3</span>
+          <div>
+            <h3>Zamanında hatırla</h3>
+            <p>Gün yaklaşınca bildirim alırsın. Tek dokunuşla ev sahibini arar, işini bitirirsin.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Özellikler ───────────────────────────────────────────────────── -->
-  <section id="features">
-    <div class="wrap center">
-      <div class="eyebrow">Neler Yapabilir</div>
-      <h2>İşini kolaylaştıran özellikler</h2>
-      <p class="section-lede">Bir emlak danışmanının günlük rutinini düşünerek tasarlandı.</p>
-    </div>
-    <div class="wrap">
-      <div class="features-grid">
-        <div class="feature">
-          <div class="ico"><img src="kirpi-hedgehog-transparent.png" alt="" /></div>
-          <h3>Sözleşmeyi tara, dolduralım</h3>
-          <p>Sözleşmenin fotoğrafını ya da PDF'ini ekle; Kirpi alanları senin için otomatik doldurmaya çalışır.</p>
-        </div>
-        <div class="feature">
-          <div class="ico"><img src="kirpi-hedgehog-transparent.png" alt="" /></div>
-          <h3>Akıllı hatırlatmalar</h3>
-          <p>Yenileme tarihinden günler önce bildirim al. Hangi gün, kaç gün önce — sen seç.</p>
-        </div>
-        <div class="feature">
-          <div class="ico"><img src="kirpi-hedgehog-transparent.png" alt="" /></div>
-          <h3>Artış oranı hesabı</h3>
-          <p>TÜFE / kira artış oranını gir, önerilen yeni kirayı anında gör.</p>
-        </div>
-        <div class="feature">
-          <div class="ico"><img src="kirpi-hedgehog-transparent.png" alt="" /></div>
-          <h3>Tek dokunuşla iletişim</h3>
-          <p>Ev sahibini veya kiracıyı doğrudan ara, SMS ya da WhatsApp ile ulaş.</p>
-        </div>
-        <div class="feature">
-          <div class="ico"><img src="kirpi-hedgehog-transparent.png" alt="" /></div>
-          <h3>Portföye genel bakış</h3>
-          <p>Tüm sözleşmelerin, yaklaşan yenilemelerin ve mülklerin tek ekranda.</p>
-        </div>
-        <div class="feature">
-          <div class="ico"><img src="kirpi-hedgehog-transparent.png" alt="" /></div>
-          <h3>Senin tarzında</h3>
-          <p>Açık/koyu tema, dört renk seçeneği ve Türkçe/İngilizce dil desteği.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Nasıl yardımcı olur ──────────────────────────────────────────── -->
-  <section class="steps" id="how">
-    <div class="wrap center">
-      <div class="eyebrow">Nasıl Çalışır</div>
-      <h2>Üç adımda gönül rahatlığı</h2>
-    </div>
-    <div class="wrap">
-      <div class="steps-grid">
-        <div class="step">
-          <div class="num">1</div>
-          <h3>Sözleşmeni ekle</h3>
-          <p>Fotoğraf çek ya da PDF yükle. Kirpi alanları doldurmaya yardım eder; sen sadece kontrol et.</p>
-        </div>
-        <div class="step">
-          <div class="num">2</div>
-          <h3>Tarihi ve oranı belirle</h3>
-          <p>Başlangıç tarihini ve artış oranını gir. Yenileme zamanını ve yeni kirayı Kirpi hesaplar.</p>
-        </div>
-        <div class="step">
-          <div class="num">3</div>
-          <h3>Zamanında hatırla</h3>
-          <p>Gün yaklaşınca bildirim alırsın. Tek dokunuşla ev sahibini arar, işini bitirirsin.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Kimiz biz ────────────────────────────────────────────────────── -->
-  <section id="who">
-    <div class="wrap who-inner">
-      <div class="eyebrow">Kimiz Biz?</div>
-      <h2>Sahadaki danışman için, sahayı bilenlerce.</h2>
+  <!-- ── Hikayemiz — ortak sorunu nasıl fark ettik ────────────────────── -->
+  <section class="story" id="story">
+    <div class="wrap story-inner">
+      <div class="eyebrow light">Hikayemiz</div>
+      <h2>Ortak bir sorundan doğdu.</h2>
       <p>
-        Kirpi'yi, emlak danışmanlarının her gün yaşadığı “acaba o yenilemeyi kaçırdım mı?”
-        kaygısını ortadan kaldırmak için kurduk. Karmaşık tablolar ve dağınık notlar yerine
-        sade, dostça ve güvenilir bir asistan hayal ettik.
+        Her emlak danışmanı aynı derdi yaşıyor: çok sayıda sözleşme, farklı yenileme
+        tarihleri ve değişen artış oranları. Bir yenilemeyi kaçırmak kolay.
       </p>
       <p>
-        Küçük ama tutkulu bir ekibiz; uygulamayı gerçek danışmanların geri bildirimleriyle,
-        adım adım geliştiriyoruz. Amacımız tek: işini kolaylaştırmak.
+        Bu takibi tek bir yerde toplamak için <span class="kw">Kirpi</span>'yi geliştirdik.
       </p>
     </div>
   </section>
@@ -490,9 +500,9 @@
   <section class="soon" id="soon">
     <div class="wrap">
       <div class="soon-card">
-        <h2>Kirpi Asistan çok yakında geliyor</h2>
+        <h2><span class="kw">Kirpi</span> çok yakında geliyor</h2>
         <p>
-          Uygulamamızın son rötuşlarını yapıyoruz. App Store ve Google Play'de
+          Uygulamamızı yayına hazırlıyoruz. App Store ve Google Play'de
           yayınlandığında ilk haberi almak ister misin?
         </p>
         <div class="stores">
@@ -507,6 +517,10 @@
           <input type="email" name="email" placeholder="E-posta adresin" aria-label="E-posta adresi" required />
           <button type="submit">Haber ver</button>
         </form>
+        <div class="notify-thanks" id="notify-thanks">
+          Teşekkürler!
+          <span>Lansmanda ilk sen haber alacaksın.</span>
+        </div>
       </div>
     </div>
   </section>
@@ -518,13 +532,13 @@
         <img src="kirpi-hedgehog-transparent.png" alt="Kirpi" style="width:30px;height:30px;border-radius:8px;" />
         <span class="name">Kirpi</span>
       </div>
-      <p>© 2026 Kirpi Asistan · Emlak danışmanının kişisel asistanı · Çok yakında</p>
+      <p>© 2026 Kirpi · Güvenli, hızlı ve basit kira takibi · Çok yakında</p>
     </div>
   </footer>
 
   <!-- ── E-posta kaydı → Google Sheets (Apps Script Web App) ──────────────
        NOTE: Replace NOTIFY_ENDPOINT below with your deployed Apps Script URL.
-       Until then, submissions just show "Teşekkürler!" without being stored. -->
+       On submit the form fades out and a "Teşekkürler!" message fades in. -->
   <script>
     (function () {
       // Paste your Google Apps Script Web App URL here (ends with /exec):
@@ -532,26 +546,34 @@
 
       var form = document.getElementById('notify-form');
       if (!form) return;
-      var btn = form.querySelector('button');
+      var thanks = document.getElementById('notify-thanks');
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var email = (form.email.value || '').trim();
         if (!email) return;
 
-        // Visual confirmation stays identical regardless of network result.
-        btn.textContent = 'Teşekkürler!';
-        btn.disabled = true;
+        // Best-effort send; the UI transition below runs regardless of the result.
+        if (NOTIFY_ENDPOINT && NOTIFY_ENDPOINT.indexOf('PASTE_') !== 0) {
+          // text/plain avoids a CORS preflight Apps Script can't answer.
+          fetch(NOTIFY_ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ email: email, source: location.href })
+          }).catch(function () { /* best-effort; user already saw success */ });
+        }
 
-        if (!NOTIFY_ENDPOINT || NOTIFY_ENDPOINT.indexOf('PASTE_') === 0) return;
-
-        // text/plain avoids a CORS preflight Apps Script can't answer.
-        fetch(NOTIFY_ENDPOINT, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify({ email: email, source: location.href })
-        }).catch(function () { /* best-effort; user already saw success */ });
+        // Fade the form out, then fade the thank-you message in.
+        form.style.opacity = '0';
+        form.style.pointerEvents = 'none';
+        setTimeout(function () {
+          form.style.display = 'none';
+          if (thanks) {
+            thanks.style.display = 'block';
+            requestAnimationFrame(function () { thanks.style.opacity = '1'; });
+          }
+        }, 450);
       });
     })();
   </script>
