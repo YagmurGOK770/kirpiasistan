@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kirpi — Güvenli, Hızlı, Basit kira takibi</title>
+  <meta name="description" content="Kirpi, emlak danışmanları için kira sözleşmesi ve yenileme takip uygulamasıdır. Basit arayüz, hızlı işlemler ve cihazında güvende kalan verilerle. Yakında!" />
+  <meta name="theme-color" content="#0EA5E9" />
+
+  <!-- Open Graph / paylaşım önizlemesi -->
+  <meta property="og:title" content="Kirpi — Güvenli, Hızlı, Basit kira takibi" />
+  <meta property="og:description" content="Emlak danışmanları için kira sözleşmesi ve yenileme takibi: basit, hızlı ve güvenli. Yakında!" />
+  <meta property="og:image" content="kirpi-hedgehog-transparent.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" type="image/png" href="kirpi-hedgehog-transparent.png" />
+
+  <!-- Albert Sans + JetBrains Mono — uygulamanın yazı ailesiyle uyumlu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Kirpi tasarım jetonları (Insight / Slate + Sky) ───────────────── */
+    :root {
+      --paper: #F7F8FA;
+      --surface: #FFFFFF;
+      --surface-alt: #F1F5F9;
+      --ink: #0F172A;
+      --sub: #64748B;
+      --faint: #94A3B8;
+      --line: #E8EBF0;
+
+      --sky: #0EA5E9;
+      --sky-deep: #0284C7;
+      --sky-soft: rgba(14, 165, 233, 0.12);
+
+      --hero-1: #0EA5E9;
+      --hero-2: #0284C7;
+      --hero-dark-1: #0C4A6E;
+      --hero-dark-2: #082F49;
+      --glow: #7DD3FC;
+      --gold: #F4C24B;
+
+      --radius: 22px;
+      --radius-sm: 14px;
+      --shadow: 0 18px 48px -16px rgba(15, 23, 42, 0.22);
+      --shadow-sm: 0 4px 16px -6px rgba(15, 23, 42, 0.16);
+      --shadow-dark: 0 22px 54px -18px rgba(8, 47, 73, 0.55);
+      --maxw: 1080px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Albert Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+    /* Marka anahtar kelimesi — "Kirpi" her yerde mavi vurgulanır */
+    .kw { color: var(--sky-deep); font-weight: 700; }
+
+    /* ── Üst gezinme ───────────────────────────────────────────────────── */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(247, 248, 250, 0.82);
+      backdrop-filter: saturate(180%) blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
+    .brand img { width: 38px; height: 38px; border-radius: 10px; }
+    .brand .name { background: linear-gradient(135deg, var(--hero-1), var(--hero-2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-cta {
+      font-weight: 600; font-size: 14px; color: var(--sky-deep);
+      text-decoration: none; padding: 9px 16px; border-radius: 999px;
+      border: 1px solid var(--sky-soft); background: var(--sky-soft);
+      transition: transform .15s ease, background .15s ease;
+    }
+    .nav-cta:hover { transform: translateY(-1px); background: rgba(14,165,233,0.18); }
+
+    /* ── Hero ──────────────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      background:
+        radial-gradient(1200px 600px at 75% -10%, rgba(125,211,252,0.35), transparent 60%),
+        radial-gradient(900px 500px at 10% 110%, rgba(14,165,233,0.12), transparent 55%);
+      padding: 76px 0 92px;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; color: var(--sky-deep);
+      background: var(--surface); border: 1px solid var(--line);
+      padding: 7px 14px; border-radius: 999px; box-shadow: var(--shadow-sm);
+      margin-bottom: 22px;
+    }
+    .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sky); box-shadow: 0 0 0 4px var(--sky-soft); }
+    h1 {
+      font-size: clamp(38px, 6vw, 60px); line-height: 1.06; letter-spacing: -0.03em;
+      font-weight: 800; margin-bottom: 20px;
+    }
+    h1 .grad { background: linear-gradient(135deg, var(--hero-1), var(--hero-2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .lede { font-size: clamp(17px, 2.2vw, 20px); color: var(--sub); max-width: 540px; margin-bottom: 32px; }
+    .cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-weight: 700; font-size: 16px; text-decoration: none;
+      padding: 15px 26px; border-radius: 999px; border: none; cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn-primary {
+      color: #fff; background: linear-gradient(135deg, var(--hero-1), var(--hero-2));
+      box-shadow: 0 14px 30px -10px rgba(14,165,233,0.6);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 38px -10px rgba(14,165,233,0.7); }
+    .btn-ghost { color: var(--ink); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+    .btn-ghost:hover { transform: translateY(-2px); }
+
+    /* Hero görsel — maskot kartı */
+    .hero-art { display: flex; justify-content: center; }
+    .mascot-card {
+      position: relative; width: 320px; max-width: 100%;
+      background: linear-gradient(160deg, var(--hero-dark-1), var(--hero-dark-2));
+      border-radius: 30px; padding: 38px 28px 30px; text-align: center;
+      box-shadow: var(--shadow);
+      animation: float 6s ease-in-out infinite;
+    }
+    .mascot-card::after {
+      content: ""; position: absolute; inset: 0; border-radius: 30px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    }
+    .mascot-card img {
+      width: 168px; height: 168px; border-radius: 24px;
+      background: #fff; box-shadow: 0 22px 44px -14px rgba(0,0,0,0.5);
+    }
+    .speech {
+      margin-top: 22px; background: rgba(255,255,255,0.96); color: var(--ink);
+      border-radius: 18px; padding: 14px 18px; font-size: 14.5px; line-height: 1.5;
+      position: relative;
+    }
+    .speech::before {
+      content: ""; position: absolute; top: -9px; left: 50%; transform: translateX(-50%);
+      border: 9px solid transparent; border-bottom-color: rgba(255,255,255,0.96); border-top: 0;
+    }
+    .speech b { color: var(--sky-deep); }
+
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+    /* ── Bölüm başlıkları ──────────────────────────────────────────────── */
+    section { padding: 84px 0; }
+    .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky-deep); margin-bottom: 12px; }
+    h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.025em; line-height: 1.12; margin-bottom: 16px; }
+    .section-lede { color: var(--sub); font-size: 18px; max-width: 620px; margin-bottom: 8px; }
+    .center { text-align: center; }
+    .center .section-lede { margin-left: auto; margin-right: auto; }
+
+    /* ── İki sütunlu blok (Nasıl Çalışır) ──────────────────────────────── */
+    .split { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .info-card {
+      background: var(--surface-alt); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 26px 28px; box-shadow: var(--shadow-sm);
+      display: flex; gap: 18px; align-items: flex-start;
+    }
+    .info-card + .info-card { margin-top: 16px; }
+    .info-card .n {
+      flex: none; width: 42px; height: 42px; border-radius: 12px;
+      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 15px; color: #fff;
+      background: linear-gradient(135deg, var(--hero-1), var(--hero-2));
+      display: grid; place-items: center; box-shadow: var(--shadow-sm);
+    }
+    .info-card h3 { font-size: 18px; margin-bottom: 5px; }
+    .info-card p { color: var(--sub); font-size: 15.5px; }
+
+    /* ── Basit · Hızlı · Güvenli (üç sütun) ────────────────────────────── */
+    .pillars {
+      background:
+        radial-gradient(800px 400px at 50% -10%, rgba(125,211,252,0.28), transparent 60%),
+        var(--surface-alt);
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+    .pillar {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 32px 28px; box-shadow: var(--shadow-sm); text-align: left;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .pillar:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .pillar .ico {
+      width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center;
+      font-size: 26px; margin-bottom: 18px;
+      background: linear-gradient(135deg, var(--hero-1), var(--hero-2));
+      box-shadow: 0 10px 24px -10px rgba(14,165,233,0.6);
+    }
+    .pillar h3 { font-size: 21px; margin-bottom: 8px; letter-spacing: -0.01em; }
+    .pillar p { color: var(--sub); font-size: 15.5px; }
+    .pillar .tag {
+      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--sky-deep); background: var(--sky-soft);
+      padding: 4px 10px; border-radius: 999px; margin-bottom: 14px;
+    }
+    .pillar .more {
+      display: inline-flex; align-items: center; gap: 5px; margin-top: 14px;
+      font-weight: 700; font-size: 14px; color: var(--sky-deep); text-decoration: none;
+    }
+    .pillar .more:hover { text-decoration: underline; }
+    /* Güvenli sütununu koyu lacivertle öne çıkar (güvenlik bandıyla aynı renk) */
+    .pillar.featured {
+      background: linear-gradient(160deg, var(--hero-dark-1), var(--hero-dark-2));
+      border-color: transparent; color: #fff; box-shadow: var(--shadow-dark);
+    }
+    .pillar.featured h3 { color: #fff; }
+    .pillar.featured p { color: rgba(255,255,255,0.80); }
+    .pillar.featured .tag { color: var(--glow); background: rgba(125,211,252,0.16); }
+    .pillar.featured .more { color: var(--glow); }
+
+    /* ── Güvenli — öne çıkan güvenlik bandı ────────────────────────────── */
+    .secure {
+      position: relative; overflow: hidden; color: #fff;
+      background: linear-gradient(165deg, var(--hero-dark-1), var(--hero-dark-2));
+    }
+    .secure::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(720px 360px at 15% -10%, rgba(125,211,252,0.22), transparent 60%);
+    }
+    .secure-inner { position: relative; }
+    .secure-head { max-width: 640px; }
+    .secure .eyebrow.light { color: var(--glow); }
+    .secure h2 { color: #fff; }
+    .secure-head p { color: rgba(255,255,255,0.82); font-size: 18px; margin-top: 6px; }
+    .secure-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+    .secure-card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+      border-radius: var(--radius); padding: 26px 22px;
+      transition: transform .18s ease, background .18s ease;
+    }
+    .secure-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.10); }
+    .secure-card .ico {
+      width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center;
+      font-size: 22px; margin-bottom: 15px;
+      background: rgba(125,211,252,0.16); border: 1px solid rgba(125,211,252,0.25);
+    }
+    .secure-card h3 { font-size: 16.5px; margin-bottom: 6px; color: #fff; }
+    .secure-card p { color: rgba(255,255,255,0.76); font-size: 14px; line-height: 1.55; }
+
+    /* ── Hikayemiz (koyu lacivert anlatı bandı) ────────────────────────── */
+    .story {
+      position: relative; overflow: hidden; color: #fff;
+      background: linear-gradient(165deg, var(--hero-dark-1), var(--hero-dark-2));
+    }
+    .story::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(720px 360px at 85% -10%, rgba(125,211,252,0.20), transparent 60%);
+    }
+    .story-inner { position: relative; max-width: 760px; margin: 0 auto; text-align: center; }
+    .story .eyebrow.light { color: var(--glow); }
+    .story h2 { color: #fff; }
+    .story p { color: rgba(255,255,255,0.82); font-size: 17px; margin-top: 16px; }
+
+    /* Koyu bölümlerde "Kirpi" vurgusu açık maviye döner */
+    .secure .kw, .story .kw, .pillar.featured .kw { color: var(--glow); }
+
+    /* ── Çağrı / yakında ───────────────────────────────────────────────── */
+    .soon { padding: 88px 0 96px; }
+    .soon-card {
+      background: linear-gradient(160deg, var(--hero-1), var(--hero-2));
+      border-radius: 32px; padding: 56px 40px; text-align: center; color: #fff;
+      position: relative; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .soon-card::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(600px 300px at 80% -20%, rgba(255,255,255,0.22), transparent 60%);
+    }
+    .soon-card h2 { color: #fff; position: relative; }
+    .soon-card .kw { color: var(--glow); }
+    .soon-card p { color: rgba(255,255,255,0.92); font-size: 18px; max-width: 560px; margin: 12px auto 28px; position: relative; }
+    .stores { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
+    .store-pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28);
+      color: #fff; font-weight: 600; font-size: 15px; padding: 13px 22px; border-radius: 999px;
+      backdrop-filter: blur(4px);
+    }
+    .store-pill .tiny { font-size: 11px; opacity: 0.8; font-weight: 500; display: block; line-height: 1.1; }
+    .notify {
+      margin-top: 30px; position: relative; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+      transition: opacity .45s ease;
+    }
+    .notify input {
+      font-family: inherit; font-size: 15px; padding: 14px 18px; border-radius: 999px; border: none;
+      width: 280px; max-width: 100%; outline: none; color: var(--ink);
+    }
+    .notify button {
+      font-family: inherit; font-weight: 700; font-size: 15px; color: var(--sky-deep);
+      background: #fff; border: none; padding: 14px 24px; border-radius: 999px; cursor: pointer;
+      transition: transform .15s ease;
+    }
+    .notify button:hover { transform: translateY(-2px); }
+    /* Gönderim sonrası teşekkür — form solar, bu belirir */
+    .notify-thanks {
+      display: none; opacity: 0; transition: opacity .45s ease;
+      margin-top: 30px; position: relative; color: #fff;
+      font-size: 22px; font-weight: 800; letter-spacing: -0.01em;
+    }
+    .notify-thanks span { display: block; font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.92); margin-top: 6px; }
+
+    /* ── Alt bilgi ─────────────────────────────────────────────────────── */
+    footer { padding: 40px 0 56px; border-top: 1px solid var(--line); }
+    .foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .foot .brand { font-size: 17px; }
+    .foot p { color: var(--faint); font-size: 14px; }
+
+    /* ── Duyarlı ───────────────────────────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 860px) {
+      .hero-grid, .split-grid { grid-template-columns: 1fr; gap: 40px; }
+      .secure-grid { grid-template-columns: 1fr; }
+      .hero-art { order: -1; }
+      section { padding: 64px 0; }
+      .hero { padding: 48px 0 64px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Üst gezinme ──────────────────────────────────────────────────── -->
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <img src="kirpi-hedgehog-transparent.png" alt="Kirpi maskotu" />
+        <span class="name">Kirpi</span>
+      </div>
+      <a class="nav-cta" href="#soon">Beni haberdar et</a>
+    </div>
+  </header>
+
+  <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="badge"><span class="dot"></span> Basit · Hızlı · Güvenli • Çok yakında • iOS &amp; Android</span>
+        <h1>Kira takibinin <span class="grad">basit, hızlı ve güvenli</span> yolu.</h1>
+        <p class="lede">
+          <span class="kw">Kirpi Asistan</span>, emlak danışmanları için kira sözleşmesi ve yenileme takip uygulamasıdır.
+          Sözleşmelerini, yenileme tarihlerini ve artış oranlarını tek yerde toplar —
+          karmaşa yok, gecikme yok, veri kaygısı yok.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#soon">Lansmanda haber ver →</a>
+          <a class="btn btn-ghost" href="#how">Nasıl çalışır?</a>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="mascot-card">
+          <img src="kirpi-hedgehog.png" alt="Kirpi — sevimli kirpi maskotu" />
+          <div class="speech">
+            Merhaba, ben <span class="kw">Kirpi Asistan</span>!<br />
+            Sözleşmenin fotoğrafını ekle, alanları <b>saniyeler içinde</b> dolduralım.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Basit · Hızlı · Güvenli ──────────────────────────────────────── -->
+  <section class="pillars" id="why">
+    <div class="wrap center">
+      <div class="eyebrow">Neden Kirpi?</div>
+      <h2>Basit, hızlı ve güvenli.</h2>
+      <p class="section-lede">
+        Kira takibini üç sözle özetliyoruz. <span class="kw">Kirpi</span> tam olarak bunun için tasarlandı.
+      </p>
+    </div>
+    <div class="wrap">
+      <div class="pillars-grid">
+        <div class="pillar featured">
+          <span class="tag">Önceliğimiz</span>
+          <div class="ico">🔒</div>
+          <h3>Güvenli</h3>
+          <p>Sözleşme ve belgelerin cihazında, sana özel saklanır. İzinsiz kimseyle paylaşılmaz — verilerin baştan sona senin kontrolünde.</p>
+          <a class="more" href="#secure">Verilerin nasıl korunuyor? →</a>
+        </div>
+        <div class="pillar">
+          <div class="ico">⚡</div>
+          <h3>Hızlı</h3>
+          <p>Sözleşmenin fotoğrafını çek, alanlar saniyeler içinde dolsun. Yeni kirayı anında hesapla, tek dokunuşla iletişime geç.</p>
+        </div>
+        <div class="pillar">
+          <div class="ico">✨</div>
+          <h3>Basit</h3>
+          <p>Karmaşık tablolara ve dağınık notlara son. Sözleşmeni ekle; her şey tek, sade ve düzenli bir ekranda toplansın.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Güvenli — öne çıkan güvenlik bandı ───────────────────────────── -->
+  <section class="secure" id="secure">
+    <div class="wrap secure-inner">
+      <div class="secure-head">
+        <div class="eyebrow light">Güvenlik Önceliğimiz</div>
+        <h2>Verilerin senin. Sadece senin.</h2>
+        <p>
+          Kira sözleşmeleri hassas bilgiler taşır. <span class="kw">Kirpi</span> bu yüzden baştan
+          güvenlik düşünülerek tasarlandı: bilgilerin cihazında kalır, izinsiz hiçbir
+          yere gitmez ve kontrol her zaman sende.
+        </p>
+      </div>
+      <div class="secure-grid">
+        <div class="secure-card">
+          <div class="ico">📱</div>
+          <h3>Cihazında saklanır</h3>
+          <p>Sözleşmelerin ve belgelerin senin telefonunda güvende durur.</p>
+        </div>
+        <div class="secure-card">
+          <div class="ico">🔐</div>
+          <h3>Sana özel erişim</h3>
+          <p>Verilerine yalnızca sen ulaşırsın. Reklam için işlenmez, üçüncü kişilerle paylaşılmaz.</p>
+        </div>
+        <div class="secure-card">
+          <div class="ico">📶</div>
+          <h3>Çevrimdışı da çalışır</h3>
+          <p>İnternet olmadan da sözleşmelerine ulaşırsın; bilgilerin her an elinin altında.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Nasıl Çalışır (iki sütunlu, okunması kolay) ──────────────────── -->
+  <section class="split" id="how">
+    <div class="wrap split-grid">
+      <div>
+        <div class="eyebrow">Nasıl Çalışır</div>
+        <h2>Üç adımda, dakikalar içinde.</h2>
+        <p class="section-lede">
+          Kurulum derdi yok, öğrenme eğrisi yok. Sözleşmeni ekle, gerisini
+          <span class="kw">Kirpi</span> halletsin.
+        </p>
+      </div>
+      <div>
+        <div class="info-card">
+          <span class="n">1</span>
+          <div>
+            <h3>Sözleşmeni ekle</h3>
+            <p>Fotoğraf çek ya da PDF yükle. Alanlar hızlıca doldurulur; sen sadece kontrol et.</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="n">2</span>
+          <div>
+            <h3>Artış oranını gir</h3>
+            <p>Kira artış oranını gir; önerilen yeni kira anında hesaplansın.</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="n">3</span>
+          <div>
+            <h3>Zamanında hatırla</h3>
+            <p>Gün yaklaşınca bildirim alırsın. Tek dokunuşla ev sahibini arar, işini bitirirsin.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Hikayemiz — ortak sorunu nasıl fark ettik ────────────────────── -->
+  <section class="story" id="story">
+    <div class="wrap story-inner">
+      <div class="eyebrow light">Hikayemiz</div>
+      <h2>Ortak bir sorundan doğdu.</h2>
+      <p>
+        Her emlak danışmanı aynı derdi yaşıyor: çok sayıda sözleşme, farklı yenileme
+        tarihleri ve değişen artış oranları. Bir yenilemeyi kaçırmak kolay.
+      </p>
+      <p>
+        Bu takibi tek bir yerde toplamak için <span class="kw">Kirpi</span>'yi geliştirdik.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Yakında / çağrı ──────────────────────────────────────────────── -->
+  <section class="soon" id="soon">
+    <div class="wrap">
+      <div class="soon-card">
+        <h2><span class="kw">Kirpi</span> çok yakında geliyor</h2>
+        <p>
+          Uygulamamızı yayına hazırlıyoruz. App Store ve Google Play'de
+          yayınlandığında ilk haberi almak ister misin?
+        </p>
+        <div class="stores">
+          <span class="store-pill">
+            <span><span class="tiny">Yakında</span> App Store</span>
+          </span>
+          <span class="store-pill">
+            <span><span class="tiny">Yakında</span> Google Play</span>
+          </span>
+        </div>
+        <form class="notify" id="notify-form">
+          <input type="email" name="email" placeholder="E-posta adresin" aria-label="E-posta adresi" required />
+          <button type="submit">Haber ver</button>
+        </form>
+        <div class="notify-thanks" id="notify-thanks">
+          Teşekkürler!
+          <span>Lansmanda ilk sen haber alacaksın.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Alt bilgi ────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="wrap foot">
+      <div class="brand">
+        <img src="kirpi-hedgehog-transparent.png" alt="Kirpi" style="width:30px;height:30px;border-radius:8px;" />
+        <span class="name">Kirpi</span>
+      </div>
+      <p>© 2026 Kirpi · Basit, hızlı ve güvenli kira takibi · Çok yakında</p>
+    </div>
+  </footer>
+
+  <!-- ── E-posta kaydı → Google Sheets (Apps Script Web App) ──────────────
+       NOTE: Replace NOTIFY_ENDPOINT below with your deployed Apps Script URL.
+       On submit the form fades out and a "Teşekkürler!" message fades in. -->
+  <script>
+    (function () {
+      // Paste your Google Apps Script Web App URL here (ends with /exec):
+      var NOTIFY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw-c0fYQzVRbbPuk1qR_QaFKjCSSFBcD4Y-jsljaaO2b3RRNMgPuGpfbR6sovqswXJdCA/exec';
+
+      var form = document.getElementById('notify-form');
+      if (!form) return;
+      var thanks = document.getElementById('notify-thanks');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = (form.email.value || '').trim();
+        if (!email) return;
+
+        // Best-effort send; the UI transition below runs regardless of the result.
+        if (NOTIFY_ENDPOINT && NOTIFY_ENDPOINT.indexOf('PASTE_') !== 0) {
+          // text/plain avoids a CORS preflight Apps Script can't answer.
+          fetch(NOTIFY_ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ email: email, source: location.href })
+          }).catch(function () { /* best-effort; user already saw success */ });
+        }
+
+        // Fade the form out, then fade the thank-you message in.
+        form.style.opacity = '0';
+        form.style.pointerEvents = 'none';
+        setTimeout(function () {
+          form.style.display = 'none';
+          if (thanks) {
+            thanks.style.display = 'block';
+            requestAnimationFrame(function () { thanks.style.opacity = '1'; });
+          }
+        }, 450);
+      });
+    })();
+  </script>
+
+</body>
+</html>
