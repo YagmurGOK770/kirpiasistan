@@ -200,13 +200,14 @@
       transition: transform .18s ease, box-shadow .18s ease;
     }
     .pillar:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .pillar .pillar-head { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
     .pillar .ico {
       width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center;
-      font-size: 26px; margin-bottom: 18px;
+      font-size: 26px; flex: none;
       background: linear-gradient(135deg, var(--hero-1), var(--hero-2));
       box-shadow: 0 10px 24px -10px rgba(14,165,233,0.6);
     }
-    .pillar h3 { font-size: 21px; margin-bottom: 8px; letter-spacing: -0.01em; }
+    .pillar h3 { font-size: 21px; margin-bottom: 0; letter-spacing: -0.01em; }
     .pillar p { color: var(--sub); font-size: 15.5px; }
     .pillar .tag {
       display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
@@ -249,12 +250,13 @@
       transition: transform .18s ease, background .18s ease;
     }
     .secure-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.10); }
+    .secure-card .secure-head-row { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
     .secure-card .ico {
       width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center;
-      font-size: 22px; margin-bottom: 15px;
+      font-size: 22px; flex: none;
       background: rgba(125,211,252,0.16); border: 1px solid rgba(125,211,252,0.25);
     }
-    .secure-card h3 { font-size: 16.5px; margin-bottom: 6px; color: #fff; }
+    .secure-card h3 { font-size: 16.5px; margin-bottom: 0; color: #fff; }
     .secure-card p { color: rgba(255,255,255,0.76); font-size: 14px; line-height: 1.55; }
 
     /* ── Hikayemiz (koyu lacivert anlatı bandı) ────────────────────────── */
@@ -385,27 +387,29 @@
     <div class="wrap center">
       <div class="eyebrow">Neden Kirpi?</div>
       <h2>Güvenli, hızlı ve basit.</h2>
-      <p class="section-lede">
-        Kira takibini üç sözle özetliyoruz. <span class="kw">Kirpi</span> tam olarak bunun için tasarlandı.
-      </p>
     </div>
     <div class="wrap">
       <div class="pillars-grid">
         <div class="pillar featured">
-          <span class="tag">Önceliğimiz</span>
-          <div class="ico">🔒</div>
-          <h3>Güvenli</h3>
+          <div class="pillar-head">
+            <div class="ico">🔒</div>
+            <h3>Güvenli</h3>
+          </div>
           <p>Bilgilerin kimseyle paylaşılmaz; cihazında, sana özel kalır.</p>
           <a class="more" href="#secure">Verilerin nasıl korunuyor? →</a>
         </div>
         <div class="pillar">
-          <div class="ico">⚡</div>
-          <h3>Hızlı</h3>
+          <div class="pillar-head">
+            <div class="ico">⚡</div>
+            <h3>Hızlı</h3>
+          </div>
           <p>Sözleşmenin fotoğrafını çek, alanlar saniyeler içinde dolsun. Yeni kirayı anında hesapla, tek dokunuşla iletişime geç.</p>
         </div>
         <div class="pillar">
-          <div class="ico">✨</div>
-          <h3>Basit</h3>
+          <div class="pillar-head">
+            <div class="ico">✨</div>
+            <h3>Basit</h3>
+          </div>
           <p>Karmaşık tablolara ve dağınık notlara son. Sözleşmeni ekle; her şey tek, sade ve düzenli bir ekranda toplansın.</p>
         </div>
       </div>
@@ -426,18 +430,24 @@
       </div>
       <div class="secure-grid">
         <div class="secure-card">
-          <div class="ico">📱</div>
-          <h3>Cihazında saklanır</h3>
+          <div class="secure-head-row">
+            <div class="ico">📱</div>
+            <h3>Cihazında saklanır</h3>
+          </div>
           <p>Sözleşmelerin ve belgelerin senin telefonunda güvende durur.</p>
         </div>
         <div class="secure-card">
-          <div class="ico">🔐</div>
-          <h3>Sana özel erişim</h3>
+          <div class="secure-head-row">
+            <div class="ico">🔐</div>
+            <h3>Sana özel erişim</h3>
+          </div>
           <p>Verilerine yalnızca sen ulaşırsın. Reklam için işlenmez, üçüncü kişilerle paylaşılmaz.</p>
         </div>
         <div class="secure-card">
-          <div class="ico">📶</div>
-          <h3>Çevrimdışı da çalışır</h3>
+          <div class="secure-head-row">
+            <div class="ico">📶</div>
+            <h3>Çevrimdışı da çalışır</h3>
+          </div>
           <p>İnternet olmadan da sözleşmelerine ulaşırsın; bilgilerin her an elinin altında.</p>
         </div>
       </div>
