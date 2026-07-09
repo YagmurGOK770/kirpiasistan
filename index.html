@@ -48,6 +48,16 @@
       --shadow-sm: 0 4px 16px -6px rgba(15, 23, 42, 0.16);
       --shadow-dark: 0 22px 54px -18px rgba(8, 47, 73, 0.55);
       --maxw: 1080px;
+
+      /* ── Yazı tipi ölçeği — tek tutarlı tipografik skala ─────────────────
+         Tüm font-size değerleri buradan gelir; sayfada rastgele ölçü kalmaz. */
+      --fs-display: clamp(38px, 6vw, 60px);   /* h1 — kahraman başlık */
+      --fs-title:   clamp(28px, 4vw, 40px);   /* h2 — bölüm başlığı */
+      --fs-heading: 20px;   /* h3 kart başlıkları, teşekkür başlığı */
+      --fs-lead:    18px;   /* giriş / açılış paragrafları */
+      --fs-body:    16px;   /* ana metin + form alanları */
+      --fs-small:   14px;   /* ikincil: gezinme, alt bilgi, bağlantılar */
+      --fs-label:   12px;   /* büyük harf etiketler ve rozetler */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -78,14 +88,14 @@
       border-bottom: 1px solid var(--line);
     }
     .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: -0.02em; }
     .brand img { width: 38px; height: 38px; border-radius: 10px; }
     /* New striped mark + vectorized "Kirpi" wordmark (landscape → sized by height). */
     .brand .mark { width: auto; height: 34px; border-radius: 0; }
     .brand .wordmark { width: auto; height: 26px; border-radius: 0; display: block; }
     .brand .name { background: linear-gradient(135deg, var(--hero-1), var(--hero-2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
     .nav-cta {
-      font-weight: 600; font-size: 14px; color: var(--sky-deep);
+      font-weight: 600; font-size: var(--fs-small); color: var(--sky-deep);
       text-decoration: none; padding: 9px 16px; border-radius: 999px;
       border: 1px solid var(--sky-soft); background: var(--sky-soft);
       transition: transform .15s ease, background .15s ease;
@@ -106,22 +116,22 @@
     }
     .badge {
       display: inline-flex; align-items: center; gap: 8px;
-      font-size: 13px; font-weight: 600; color: var(--sky-deep);
+      font-size: var(--fs-label); font-weight: 600; color: var(--sky-deep);
       background: var(--surface); border: 1px solid var(--line);
       padding: 7px 14px; border-radius: 999px; box-shadow: var(--shadow-sm);
       margin-bottom: 22px;
     }
     .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sky); box-shadow: 0 0 0 4px var(--sky-soft); }
     h1 {
-      font-size: clamp(38px, 6vw, 60px); line-height: 1.06; letter-spacing: -0.03em;
+      font-size: var(--fs-display); line-height: 1.06; letter-spacing: -0.03em;
       font-weight: 800; margin-bottom: 20px;
     }
     h1 .grad { background: linear-gradient(135deg, var(--hero-1), var(--hero-2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-    .lede { font-size: clamp(17px, 2.2vw, 20px); color: var(--sub); max-width: 540px; margin-bottom: 32px; }
+    .lede { font-size: var(--fs-lead); color: var(--sub); max-width: 540px; margin-bottom: 32px; }
     .cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
     .btn {
       display: inline-flex; align-items: center; gap: 9px;
-      font-weight: 700; font-size: 16px; text-decoration: none;
+      font-weight: 700; font-size: var(--fs-body); text-decoration: none;
       padding: 15px 26px; border-radius: 999px; border: none; cursor: pointer;
       transition: transform .15s ease, box-shadow .15s ease;
     }
@@ -153,7 +163,7 @@
     }
     .speech {
       margin-top: 22px; background: rgba(255,255,255,0.96); color: var(--ink);
-      border-radius: 18px; padding: 14px 18px; font-size: 14.5px; line-height: 1.5;
+      border-radius: 18px; padding: 14px 18px; font-size: var(--fs-body); line-height: 1.5;
       position: relative;
     }
     .speech::before {
@@ -166,9 +176,9 @@
 
     /* ── Bölüm başlıkları ──────────────────────────────────────────────── */
     section { padding: 84px 0; }
-    .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky-deep); margin-bottom: 12px; }
-    h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.025em; line-height: 1.12; margin-bottom: 16px; }
-    .section-lede { color: var(--sub); font-size: 18px; max-width: 620px; margin-bottom: 8px; }
+    .eyebrow { font-size: var(--fs-label); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky-deep); margin-bottom: 12px; }
+    h2 { font-size: var(--fs-title); letter-spacing: -0.025em; line-height: 1.12; margin-bottom: 16px; }
+    .section-lede { color: var(--sub); font-size: var(--fs-lead); max-width: 620px; margin-bottom: 8px; }
     .center { text-align: center; }
     .center .section-lede { margin-left: auto; margin-right: auto; }
 
@@ -187,8 +197,8 @@
       background: linear-gradient(135deg, var(--hero-1), var(--hero-2));
       display: grid; place-items: center; box-shadow: var(--shadow-sm);
     }
-    .info-card h3 { font-size: 18px; margin-bottom: 5px; }
-    .info-card p { color: var(--sub); font-size: 15.5px; }
+    .info-card h3 { font-size: var(--fs-heading); margin-bottom: 5px; }
+    .info-card p { color: var(--sub); font-size: var(--fs-body); }
 
     /* ── Basit · Hızlı · Güvenli (üç sütun) ────────────────────────────── */
     .pillars {
@@ -211,16 +221,16 @@
       background: linear-gradient(135deg, var(--hero-1), var(--hero-2));
       box-shadow: 0 10px 24px -10px rgba(14,165,233,0.6);
     }
-    .pillar h3 { font-size: 21px; margin-bottom: 0; letter-spacing: -0.01em; }
-    .pillar p { color: var(--sub); font-size: 15.5px; }
+    .pillar h3 { font-size: var(--fs-heading); margin-bottom: 0; letter-spacing: -0.01em; }
+    .pillar p { color: var(--sub); font-size: var(--fs-body); }
     .pillar .tag {
-      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      display: inline-block; font-size: var(--fs-label); font-weight: 700; letter-spacing: 0.08em;
       text-transform: uppercase; color: var(--sky-deep); background: var(--sky-soft);
       padding: 4px 10px; border-radius: 999px; margin-bottom: 14px;
     }
     .pillar .more {
       display: inline-flex; align-items: center; gap: 5px; margin-top: 14px;
-      font-weight: 700; font-size: 14px; color: var(--sky-deep); text-decoration: none;
+      font-weight: 700; font-size: var(--fs-small); color: var(--sky-deep); text-decoration: none;
     }
     .pillar .more:hover { text-decoration: underline; }
     /* Güvenli sütununu koyu lacivertle öne çıkar (güvenlik bandıyla aynı renk) */
@@ -246,7 +256,7 @@
     .secure-head { max-width: 640px; }
     .secure .eyebrow.light { color: var(--glow); }
     .secure h2 { color: #fff; }
-    .secure-head p { color: rgba(255,255,255,0.82); font-size: 18px; margin-top: 6px; }
+    .secure-head p { color: rgba(255,255,255,0.82); font-size: var(--fs-lead); margin-top: 6px; }
     .secure-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
     .secure-card {
       background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
@@ -260,8 +270,8 @@
       font-size: 22px; flex: none;
       background: rgba(125,211,252,0.16); border: 1px solid rgba(125,211,252,0.25);
     }
-    .secure-card h3 { font-size: 16.5px; margin-bottom: 0; color: #fff; }
-    .secure-card p { color: rgba(255,255,255,0.76); font-size: 14px; line-height: 1.55; }
+    .secure-card h3 { font-size: var(--fs-heading); margin-bottom: 0; color: #fff; }
+    .secure-card p { color: rgba(255,255,255,0.76); font-size: var(--fs-body); line-height: 1.55; }
 
     /* ── Hikayemiz (koyu lacivert anlatı bandı) ────────────────────────── */
     .story {
@@ -275,7 +285,7 @@
     .story-inner { position: relative; max-width: 760px; margin: 0 auto; text-align: center; }
     .story .eyebrow.light { color: var(--glow); }
     .story h2 { color: #fff; }
-    .story p { color: rgba(255,255,255,0.82); font-size: 17px; margin-top: 16px; }
+    .story p { color: rgba(255,255,255,0.82); font-size: var(--fs-lead); margin-top: 16px; }
 
     /* Koyu bölümlerde "Kirpi" vurgusu açık maviye döner */
     .secure .kw, .story .kw, .pillar.featured .kw { color: var(--glow); }
@@ -293,25 +303,25 @@
     }
     .soon-card h2 { color: #fff; position: relative; }
     .soon-card .kw { color: var(--glow); }
-    .soon-card p { color: rgba(255,255,255,0.92); font-size: 18px; max-width: 560px; margin: 12px auto 28px; position: relative; }
+    .soon-card p { color: rgba(255,255,255,0.92); font-size: var(--fs-lead); max-width: 560px; margin: 12px auto 28px; position: relative; }
     .stores { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
     .store-pill {
       display: inline-flex; align-items: center; gap: 10px;
       background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28);
-      color: #fff; font-weight: 600; font-size: 15px; padding: 13px 22px; border-radius: 999px;
+      color: #fff; font-weight: 600; font-size: var(--fs-body); padding: 13px 22px; border-radius: 999px;
       backdrop-filter: blur(4px);
     }
-    .store-pill .tiny { font-size: 11px; opacity: 0.8; font-weight: 500; display: block; line-height: 1.1; }
+    .store-pill .tiny { font-size: var(--fs-label); opacity: 0.8; font-weight: 500; display: block; line-height: 1.1; }
     .notify {
       margin-top: 30px; position: relative; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
       transition: opacity .45s ease;
     }
     .notify input {
-      font-family: inherit; font-size: 15px; padding: 14px 18px; border-radius: 999px; border: none;
+      font-family: inherit; font-size: var(--fs-body); padding: 14px 18px; border-radius: 999px; border: none;
       width: 280px; max-width: 100%; outline: none; color: var(--ink);
     }
     .notify button {
-      font-family: inherit; font-weight: 700; font-size: 15px; color: var(--sky-deep);
+      font-family: inherit; font-weight: 700; font-size: var(--fs-body); color: var(--sky-deep);
       background: #fff; border: none; padding: 14px 24px; border-radius: 999px; cursor: pointer;
       transition: transform .15s ease;
     }
@@ -320,15 +330,14 @@
     .notify-thanks {
       display: none; opacity: 0; transition: opacity .45s ease;
       margin-top: 30px; position: relative; color: #fff;
-      font-size: 22px; font-weight: 800; letter-spacing: -0.01em;
+      font-size: var(--fs-heading); font-weight: 800; letter-spacing: -0.01em;
     }
-    .notify-thanks span { display: block; font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.92); margin-top: 6px; }
+    .notify-thanks span { display: block; font-size: var(--fs-small); font-weight: 500; color: rgba(255,255,255,0.92); margin-top: 6px; }
 
     /* ── Alt bilgi ─────────────────────────────────────────────────────── */
     footer { padding: 40px 0 56px; border-top: 1px solid var(--line); }
     .foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-    .foot .brand { font-size: 17px; }
-    .foot p { color: var(--faint); font-size: 14px; }
+    .foot p { color: var(--faint); font-size: var(--fs-small); }
 
     /* ── Duyarlı ───────────────────────────────────────────────────────── */
     @media (max-width: 1000px) {
