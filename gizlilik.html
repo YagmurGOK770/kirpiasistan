@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gizlilik Politikası — Kirpi Asistan</title>
+  <meta name="description" content="Kirpi Asistan mobil uygulamasının gizlilik politikası ve KVKK aydınlatma metni." />
+  <link rel="icon" type="image/png" href="kirpi-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #F7F8FA;
+      --surface: #FFFFFF;
+      --ink: #0F172A;
+      --sub: #64748B;
+      --line: #E8EBF0;
+      --sky: #0EA5E9;
+      --sky-deep: #0284C7;
+      --sky-soft: rgba(14, 165, 233, 0.12);
+      --radius: 22px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #0B1220;
+        --surface: #111A2C;
+        --ink: #E5EAF2;
+        --sub: #9AA6B8;
+        --line: #1E2A40;
+        --sky-soft: rgba(14, 165, 233, 0.16);
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Albert Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+    header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+    header img { width: 40px; height: 40px; border-radius: 10px; }
+    header a { color: var(--ink); text-decoration: none; font-weight: 800; font-size: 18px; }
+    h1 { font-size: 32px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.01em; }
+    h2 { font-size: 20px; margin: 36px 0 8px; }
+    h3 { font-size: 17px; margin: 22px 0 6px; }
+    p, li { color: var(--ink); }
+    .meta { color: var(--sub); margin: 0 0 24px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px 22px;
+    }
+    .summary { background: var(--sky-soft); border-color: transparent; margin-bottom: 28px; }
+    .summary ul { margin: 8px 0 0; padding-left: 20px; }
+    ul { padding-left: 20px; }
+    a { color: var(--sky-deep); }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    th, td { text-align: left; vertical-align: top; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+    th { color: var(--sub); font-weight: 600; }
+    .table-scroll { overflow-x: auto; }
+    footer { color: var(--sub); font-size: 14px; margin-top: 40px; }
+    header { justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .switch { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--surface); }
+    .switch button {
+      font: inherit; font-size: 14px; font-weight: 700; color: var(--sub);
+      background: transparent; border: 0; border-radius: 999px; padding: 6px 14px; cursor: pointer;
+    }
+    .switch button[aria-pressed="true"] { background: var(--sky-deep); color: #fff; }
+    [data-lang="en"] { display: none; }
+    html[lang="en"] [data-lang="tr"] { display: none; }
+    html[lang="en"] [data-lang="en"] { display: block; }
+  </style>
+  <noscript><style>[data-lang="en"] { display: block; } .switch { display: none; }</style></noscript>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img src="kirpi-icon.png" alt="" />
+        <a href="/">Kirpi Asistan</a>
+      </div>
+      <div class="switch" role="group" aria-label="Dil / Language">
+        <button type="button" data-set-lang="tr" aria-pressed="true">TR</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </header>
+
+    <section data-lang="tr">
+    <h1>Gizlilik Politikası ve KVKK Aydınlatma Metni</h1>
+    <p class="meta">Son güncelleme: 10 Ekim 2026</p>
+
+    <div class="card summary">
+      <strong>Kısaca</strong>
+      <ul>
+        <li>Sözleşmeleriniz, belgeleriniz ve müşteri bilgileriniz <strong>yalnızca telefonunuzda</strong> saklanır; bize gönderilmez.</li>
+        <li>Sözleşme tarama <strong>telefonunuzun içinde</strong> yapılır; fotoğraflar hiçbir sunucuya yüklenmez.</li>
+        <li>Sunucuda yalnızca giriş için gereken <strong>hesap bilgileriniz</strong> (ad, e-posta) tutulur.</li>
+        <li>Uygulamanın ne kadar ve nasıl kullanıldığını anlamak için yalnızca <strong>anonim kullanım istatistikleri</strong> toplarız; bunlar sözleşme bilgisi veya kişisel bilgi içermez.</li>
+        <li>Reklam, uygulamalar arası izleme veya veri satışı yoktur.</li>
+      </ul>
+    </div>
+
+    <h2>1. Veri sorumlusu</h2>
+    <p>
+      Kirpi Asistan (“Kirpi”, “uygulama”), bireysel geliştirici <strong>Göktuğ Yağmur Gök</strong> tarafından sunulmaktadır.
+      6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) kapsamında veri sorumlusu Göktuğ Yağmur Gök’tür.
+      İletişim: <a href="mailto:support@kirpiasistan.com">support@kirpiasistan.com</a>
+    </p>
+
+    <h2>2. Hangi verileri, neden işliyoruz?</h2>
+
+    <h3>2.1 Hesap bilgileri</h3>
+    <p>
+      Google ile giriş yaptığınızda Google hesabınızdaki <strong>ad, e-posta adresi, profil fotoğrafı bağlantısı</strong> ve
+      Google hesap kimliğiniz bize iletilir. Ayrıca hesabınıza bağlı olarak <strong>plan bilgisi</strong> (Ücretsiz/Pro) tutulur.
+    </p>
+    <p>
+      <strong>Amaç:</strong> hesabınızı oluşturmak, giriş yapmanızı sağlamak ve abonelik durumunuzu yönetmek.
+      <strong>Hukuki sebep:</strong> bir sözleşmenin kurulması veya ifasıyla doğrudan ilgili olması (KVKK m. 5/2-c).
+    </p>
+
+    <h3>2.2 Uygulamaya girdiğiniz bilgiler (yalnızca telefonunuzda)</h3>
+    <p>
+      Kira sözleşmeleri; mal sahibi ve kiracı adları, telefon numaraları, adresler, kira tutarları, tarihler, notlar,
+      eklediğiniz belge ve fotoğraflar ile profil bilgileriniz <strong>yalnızca cihazınızda</strong> saklanır ve bize iletilmez.
+      Bu bilgiler çoğunlukla müşterilerinize (mal sahipleri ve kiracılar) aittir; bu kişilerin verilerini kendi mesleki
+      faaliyetiniz kapsamında işlerken KVKK’dan doğan yükümlülükler size aittir.
+    </p>
+
+    <h3>2.3 Sözleşme tarama (Pro)</h3>
+    <p>
+      Bir sözleşmenin fotoğrafını tarattığınızda metin, <strong>telefonunuzun içindeki</strong> metin tanıma özelliğiyle okunur
+      (iPhone’da Apple Vision, Android’de Google ML Kit). Fotoğraflar ve okunan metin hiçbir sunucuya gönderilmez.
+      Android’de Google ML Kit, Google’a görüntü içermeyen anonim kullanım ve performans istatistikleri gönderebilir.
+    </p>
+
+
+    <h3>2.4 Telefon izinleri (isteğe bağlı)</h3>
+    <ul>
+      <li><strong>Kamera ve fotoğraflar:</strong> belge ve sözleşme fotoğrafı eklemek, profil fotoğrafı seçmek için.</li>
+      <li><strong>Takvim:</strong> yenileme tarihlerini telefon takviminize eklemek için (yalnızca siz istediğinizde).</li>
+      <li><strong>Bildirimler:</strong> yenileme hatırlatmaları için. Hatırlatmalar telefonunuzda oluşturulur.</li>
+    </ul>
+    <p>Bu izinleri vermek zorunda değilsiniz; vermezseniz ilgili özellik çalışmaz, uygulamanın geri kalanı çalışmaya devam eder.</p>
+
+    <h3>2.5 Satın almalar</h3>
+    <p>
+      Pro aboneliği App Store veya Google Play üzerinden satın alınır. Ödeme bilgilerinizi Apple veya Google işler;
+      kart bilgileriniz bize iletilmez. Biz yalnızca aboneliğinizin aktif olup olmadığı bilgisini alırız.
+    </p>
+
+    <h3>2.6 Anonim kullanım istatistikleri</h3>
+    <p>
+      Uygulamayı geliştirebilmek için uygulamanın ne kadar ve nasıl kullanıldığına dair <strong>anonim istatistikler</strong> topluyoruz:
+      uygulamanın açılması, hangi ekranların görüntülendiği, hangi özelliklerin kullanıldığı (ör. “sözleşme eklendi”, “tarama yapıldı”,
+      “taramada 8 alandan 6’sı bulundu”), uygulama sürümü, cihaz türü, işletim sistemi sürümü, dil ve yaklaşık konum (ülke/şehir düzeyinde).
+    </p>
+    <p>
+      Bu istatistikler yalnızca telefonunuzda rastgele oluşturulan bir uygulama kimliğiyle ilişkilendirilir ve hesabınıza bağlanmaz.
+      <strong>Adınız, e-posta adresiniz, telefon numaraları, adresler, kira tutarları, sözleşme içerikleri, müşteri bilgileri, belgeler veya
+      fotoğraflar bu istatistiklere hiçbir zaman eklenmez</strong>; IP adresiniz saklanmaz. Veriler PostHog’un Frankfurt’taki (Almanya, AB)
+      sunucularında en fazla 7 yıl tutulur.
+    </p>
+    <p><strong>Hukuki sebep:</strong> ürünü geliştirmeye yönelik meşru menfaatimiz (KVKK m. 5/2-f). İtiraz etmek için
+      <a href="mailto:support@kirpiasistan.com">support@kirpiasistan.com</a> adresine yazabilirsiniz.</p>
+
+    <h3>2.7 Web sitesi kayıt formu</h3>
+    <p>kirpiasistan.com’daki “haber ver” formuna e-posta adresinizi yazarsanız, uygulama yayınlandığında size haber vermek için
+      bu adres Google E-Tablolar’da (Google, yurt dışı) saklanır ve lansman duyurusundan sonra en geç 6 ay içinde silinir.
+      Hukuki sebep: açık rızanız (formu kendi isteğinizle doldurmanız). Dilediğiniz zaman
+      <a href="mailto:support@kirpiasistan.com">support@kirpiasistan.com</a> adresine yazarak silinmesini isteyebilirsiniz.</p>
+
+    <h3>2.8 Yapmadıklarımız</h3>
+    <p>Reklam göstermiyoruz, sizi diğer uygulamalar veya web siteleri arasında izlemiyoruz ve verilerinizi satmıyoruz.</p>
+
+    <h2>3. Verilerin aktarıldığı taraflar ve yurt dışına aktarım</h2>
+    <div class="table-scroll">
+      <table>
+        <tr><th>Hizmet</th><th>Ne için</th><th>Hangi veri</th><th>Konum</th></tr>
+        <tr><td>Supabase</td><td>Hesap ve giriş</td><td>Hesap bilgileri (2.1)</td><td>Frankfurt, Almanya (AB)</td></tr>
+        <tr><td>PostHog</td><td>Anonim kullanım istatistikleri</td><td>Uygulama ve özellik kullanımı, cihaz/sürüm bilgisi (2.6)</td><td>Frankfurt, Almanya (AB)</td></tr>
+        <tr><td>Google</td><td>Google ile giriş; Android’de cihaz içi metin tanıma</td><td>Giriş bilgileri; anonim ML Kit istatistikleri</td><td>Google’ın sunucuları (yurt dışı)</td></tr>
+        <tr><td>Apple / Google Play</td><td>Uygulama dağıtımı ve abonelik ödemeleri</td><td>Satın alma bilgileri (kendi politikaları kapsamında)</td><td>Yurt dışı</td></tr>
+      </table>
+    </div>
+    <p>
+      Hesap bilgileriniz ve anonim kullanım istatistikleri Türkiye dışında (Almanya) bulunan sunucularda saklandığından, bu durum
+      kişisel verilerin yurt dışına aktarılması niteliğindedir ve KVKK’nın 9. maddesinde öngörülen şartlara uygun olarak yapılır.
+      Verileriniz yasal zorunluluklar dışında başka kişi veya kurumlarla paylaşılmaz.
+    </p>
+
+    <h2>4. Saklama süresi</h2>
+    <ul>
+      <li>Hesap bilgileri: hesabınız silinene kadar.</li>
+    <li>Anonim kullanım istatistikleri: en fazla 7 yıl.</li>
+    <li>Web sitesi kayıt formundaki e-posta adresleri: lansman duyurusundan sonra en geç 6 ay.</li>
+        <li>Telefonunuzdaki veriler: uygulamayı silene, “Hesabı sil” işlemini yapana veya kendiniz silene kadar.</li>
+    </ul>
+
+    <h2>5. Hesabınızı ve verilerinizi silme</h2>
+    <p>
+      Uygulamada <strong>Ayarlar → Hesabı sil</strong> adımı telefonunuzdaki tüm Kirpi verilerini siler ve oturumu kapatır.
+      Sunucudaki hesabınızın da silinmesi için <a href="mailto:support@kirpiasistan.com">support@kirpiasistan.com</a>
+      adresine hesabınıza bağlı e-posta adresinizden yazmanız yeterlidir; talebiniz en geç 30 gün içinde yerine getirilir.
+    </p>
+
+    <h2>6. KVKK kapsamındaki haklarınız</h2>
+    <p>KVKK’nın 11. maddesi uyarınca; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme,
+      işlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme, yurt içinde veya yurt dışında aktarıldığı üçüncü
+      kişileri bilme, eksik veya yanlış işlenmişse düzeltilmesini, KVKK’nın 7. maddesindeki şartlar çerçevesinde silinmesini
+      veya yok edilmesini ve bu işlemlerin aktarıldığı üçüncü kişilere bildirilmesini isteme, münhasıran otomatik sistemlerle
+      analiz edilmesi sonucu aleyhinize bir sonucun ortaya çıkmasına itiraz etme ve kanuna aykırı işleme sebebiyle zarara
+      uğramanız hâlinde zararın giderilmesini talep etme haklarına sahipsiniz.</p>
+    <p>Taleplerinizi <a href="mailto:support@kirpiasistan.com">support@kirpiasistan.com</a> adresine iletebilirsiniz.
+      Talepleriniz en geç 30 gün içinde ücretsiz olarak sonuçlandırılır.</p>
+
+    <h2>7. Çocuklar</h2>
+    <p>Kirpi, emlak profesyonelleri ve mülk sahipleri için tasarlanmıştır; 18 yaşından küçüklere yönelik değildir.</p>
+
+    <h2>8. Değişiklikler</h2>
+    <p>Bu metni güncelleyebiliriz. Önemli değişikliklerde uygulama içinde veya bu sayfada bilgilendirme yaparız. Güncel sürüm her zaman bu sayfadadır.</p>
+
+    </section>
+
+    <section data-lang="en">
+    <h1>Privacy Policy</h1>
+    <p class="meta">Last updated: October 10, 2026</p>
+
+    <div class="card summary">
+      <strong>In short</strong>
+      <ul>
+        <li>Your contracts, documents and client details are stored <strong>only on your phone</strong> and are not sent to us.</li>
+        <li>Contract scanning happens <strong>on your phone</strong>; photos are never uploaded.</li>
+        <li>Our server holds only the <strong>account details</strong> (name, email) needed for sign-in.</li>
+        <li>To understand how much and how the app is used, we collect only <strong>anonymous usage statistics</strong> — never contract or personal details.</li>
+        <li>No ads, no cross-app tracking, no selling of data.</li>
+      </ul>
+    </div>
+
+    <h2>1. Who we are</h2>
+    <p>Kirpi Asistan (“Kirpi”) is provided by the individual developer <strong>Göktuğ Yağmur Gök</strong>, who is the data controller.
+      Contact: <a href="mailto:support@kirpiasistan.com">support@kirpiasistan.com</a></p>
+
+    <h2>2. What we process and why</h2>
+    <ul>
+      <li><strong>Account details:</strong> when you sign in with Google we receive your name, email address, profile photo link and Google account ID. We also keep your plan (Free/Pro). Used to create your account, sign you in and manage your subscription.</li>
+      <li><strong>Data you enter</strong> (contracts, landlord and tenant names, phone numbers, addresses, rents, dates, notes, documents, photos, your profile) stays <strong>on your device only</strong>. Much of it concerns your clients; you are responsible for handling their data lawfully in your professional activity.</li>
+      <li><strong>Contract scanning (Pro)</strong> reads text <strong>on your device</strong> (Apple Vision on iPhone, Google ML Kit on Android). Photos and extracted text are not sent anywhere. On Android, Google ML Kit may send Google anonymous usage and performance statistics that contain no images.</li>
+      <li><strong>Permissions</strong> (all optional): camera and photos to add documents and a profile photo; calendar to add renewal dates when you ask; notifications for renewal reminders created on your phone.</li>
+      <li><strong>Purchases</strong> are handled by Apple or Google; we never receive your card details, only whether your subscription is active.</li>
+      <li><strong>Anonymous usage statistics:</strong> app opens, screens viewed, features used (e.g. “contract added”, “scan found 6 of 8 fields”), app version, device type, OS version, language and approximate location (country/city level). They are tied only to a random ID created on your phone, not to your account. <strong>Your name, email, phone numbers, addresses, rents, contract contents, client details, documents and photos are never included</strong>, and your IP address is not stored. Stored by PostHog in Frankfurt, Germany (EU) for up to 7 years, based on our legitimate interest in improving the product (KVKK Art. 5/2-f); to object, email <a href="mailto:support@kirpiasistan.com">support@kirpiasistan.com</a>.</li>
+      <li><strong>Website sign-up form:</strong> if you leave your email on kirpiasistan.com to be notified at launch, it is stored in Google Sheets (Google, outside Turkey) and deleted at most 6 months after the launch announcement, based on your consent. Email <a href="mailto:support@kirpiasistan.com">support@kirpiasistan.com</a> to have it removed at any time.</li>
+      <li>We show no ads, do not track you across other apps or websites and do not sell your data.</li>
+    </ul>
+
+    <h2>3. Service providers and international transfers</h2>
+    <p><strong>Supabase</strong> stores account details and <strong>PostHog</strong> stores anonymous usage statistics, both on servers in <strong>Frankfurt, Germany (EU)</strong>.
+      <strong>Google</strong> provides Google Sign-In and, on Android, on-device text recognition. <strong>Apple / Google Play</strong>
+      handle app distribution and subscription payments. As these providers operate outside Turkey, this involves an international
+      transfer of personal data, carried out in line with Article 9 of Turkey’s Personal Data Protection Law (KVKK).
+      We do not share your data with anyone else except where required by law.</p>
+
+    <h2>4. Retention</h2>
+    <p>Account details are kept until your account is deleted; anonymous usage statistics for up to 7 years; website sign-up emails until at most 6 months after the launch announcement; on-device data until you delete it, delete the app or use “Delete account”.</p>
+
+    <h2>5. Deleting your account and data</h2>
+    <p>In the app, <strong>Settings → Delete account</strong> erases all Kirpi data on your phone and signs you out. To also delete
+      your account from our server, email <a href="mailto:support@kirpiasistan.com">support@kirpiasistan.com</a> from the
+      address linked to your account; we will complete the request within 30 days.</p>
+
+    <h2>6. Your rights</h2>
+    <p>Under KVKK Article 11 you may ask whether your data is processed, request information about it and its purpose, learn which
+      third parties it is transferred to in Turkey or abroad, request correction or deletion, object to outcomes of solely automated
+      processing, and claim compensation for unlawful processing. Contact <a href="mailto:support@kirpiasistan.com">support@kirpiasistan.com</a>;
+      we respond free of charge within 30 days.</p>
+
+    <h2>7. Children</h2>
+    <p>Kirpi is designed for real-estate professionals and property owners and is not directed at anyone under 18.</p>
+
+    <h2>8. Changes</h2>
+    <p>We may update this policy. For significant changes we will notify you in the app or on this page. The current version is always on this page.</p>
+
+    </section>
+
+    <footer>© 2026 Kirpi Asistan · <a href="/">kirpiasistan.com</a></footer>
+  </div>
+  <script>
+    (function () {
+      var TITLES = { tr: 'Gizlilik Politikası — Kirpi Asistan', en: 'Privacy Policy — Kirpi Asistan' };
+      function setLang(lang, remember) {
+        if (lang !== 'en') lang = 'tr';
+        document.documentElement.lang = lang;
+        document.title = TITLES[lang];
+        document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
+        });
+        if (remember) { try { localStorage.setItem('kirpi-policy-lang', lang); } catch (e) {} }
+      }
+      // ?lang=en or #en in the link wins; otherwise the visitor's last choice; default Turkish.
+      var fromUrl = new URLSearchParams(location.search).get('lang') || (location.hash === '#en' ? 'en' : null);
+      var saved = null;
+      try { saved = localStorage.getItem('kirpi-policy-lang'); } catch (e) {}
+      setLang(fromUrl || saved || 'tr', false);
+      document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+        b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang'), true); });
+      });
+    })();
+  </script>
+</body>
+</html>
