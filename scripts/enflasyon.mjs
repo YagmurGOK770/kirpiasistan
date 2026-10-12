@@ -13,7 +13,7 @@ const BASE = 'https://evds3.tcmb.gov.tr/igmevdsms-dis/';
 const FILE = new URL('../data/enflasyon.json', import.meta.url);
 // Series codes (overridable from the workflow without a code change).
 const NEW_CODE = process.env.TUFE_SERIES || 'TP.TUKFIY2025.GENEL'; // TÜFE (2025=100)
-const OLD_CODE = process.env.TUFE_OLD_SERIES || 'TP.FG.J0'; // TÜFE (2003=100), archived
+const OLD_CODE = process.env.TUFE_OLD_SERIES || 'TP.GENENDEKS.T1'; // TÜFE (2003=100), archived
 
 if (!KEY) {
   console.error('EVDS_KEY is not set');
