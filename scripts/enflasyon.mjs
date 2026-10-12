@@ -32,17 +32,18 @@ async function get(path) {
 }
 
 // "discover": print the price-index series EVDS offers, to pick / verify the codes.
+// `discover` lists categories; `discover <category id>` its data groups; `discover <group code>`
+// its series.
 if (process.argv[2] === 'discover') {
-  const cats = await get('categories/type=json');
-  for (const c of cats.filter((c) => /fiyat/i.test(c.TOPIC_TITLE_TR ?? ''))) {
-    console.log(`\n# ${c.CATEGORY_ID} ${c.TOPIC_TITLE_TR}`);
-    const groups = await get(`datagroups/mode=2&code=${c.CATEGORY_ID}&type=json`);
-    for (const g of groups.filter((g) => /t[uü]ket/i.test(g.DATAGROUP_NAME ?? ''))) {
-      console.log(`## ${g.DATAGROUP_CODE} ${g.DATAGROUP_NAME} [${g.START_DATE} – ${g.END_DATE}]`);
-      const series = await get(`serieList/type=json&code=${g.DATAGROUP_CODE}`);
-      for (const s of series.slice(0, 6)) console.log(`   ${s.SERIE_CODE}  ${s.SERIE_NAME} [${s.START_DATE} – ${s.END_DATE}]`);
-    }
-  }
+  const arg = process.argv[3] || process.env.DISCOVER || '';
+  const show = (rows) => {
+    if (!Array.isArray(rows)) return console.log(JSON.stringify(rows).slice(0, 1500));
+    console.log(`${rows.length} rows; fields: ${Object.keys(rows[0] ?? {}).join(', ')}`);
+    for (const r of rows) console.log('  ' + Object.values(r).map((v) => String(v).slice(0, 70)).join(' | '));
+  };
+  if (!arg) show(await get('categories/type=json'));
+  else if (/^\d+$/.test(arg)) show(await get(`datagroups/mode=2&code=${arg}&type=json`));
+  else show(await get(`serieList/type=json&code=${arg}`));
   process.exit(0);
 }
 

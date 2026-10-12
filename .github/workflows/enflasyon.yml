@@ -11,6 +11,9 @@ on:
       mode:
         description: 'update or discover (list EVDS series)'
         default: update
+      what:
+        description: 'discover: category id or data group code (empty = categories)'
+        default: ''
 permissions:
   contents: write
   pages: write
@@ -27,6 +30,7 @@ jobs:
           EVDS_KEY: ${{ secrets.EVDS_KEY }}
           TUFE_SERIES: ${{ vars.TUFE_SERIES }}
           TUFE_OLD_SERIES: ${{ vars.TUFE_OLD_SERIES }}
+          DISCOVER: ${{ github.event.inputs.what }}
         run: node scripts/enflasyon.mjs ${{ github.event.inputs.mode == 'discover' && 'discover' || '' }}
       - name: Commit if changed
         if: github.event.inputs.mode != 'discover'
