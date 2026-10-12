@@ -1,0 +1,8 @@
+{
+  "period": "2026-09",
+  "announced": "2026-10-05",
+  "next": "2026-11-03",
+  "tufe": { "monthly": 1.84, "annual": 29.73, "avg12": 31.49 },
+  "ufe": { "monthly": 2.07, "annual": 27.38, "avg12": 27.81 },
+  "source": "TÜİK"
+}
