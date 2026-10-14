@@ -19,6 +19,7 @@
       --sky: #0EA5E9;
       --sky-deep: #0284C7;
       --sky-soft: rgba(14, 165, 233, 0.12);
+      --brand: #306CA8; /* logo blue: icon ring, hedgehog, wordmark */
       --radius: 22px;
     }
     @media (prefers-color-scheme: dark) {
@@ -29,6 +30,7 @@
         --sub: #9AA6B8;
         --line: #1E2A40;
         --sky-soft: rgba(14, 165, 233, 0.16);
+        --brand: #8DB4DE; /* same hue, lightened for the dark background */
       }
     }
     * { box-sizing: border-box; }
@@ -43,7 +45,7 @@
     .wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
     header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
     header img { width: 40px; height: 40px; border-radius: 10px; }
-    header a { color: var(--ink); text-decoration: none; font-weight: 800; font-size: 18px; }
+    header a { color: var(--brand); text-decoration: none; font-weight: 800; font-size: 18px; }
     h1 { font-size: 32px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.01em; }
     h2 { font-size: 20px; margin: 36px 0 8px; }
     h3 { font-size: 17px; margin: 22px 0 6px; }
